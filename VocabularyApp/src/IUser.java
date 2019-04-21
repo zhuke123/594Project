@@ -12,12 +12,12 @@ public interface IUser {
 	public String getUsername();
 	
 	/**
-	 * flashcard event
+	 * @return Flash Card event
 	 */
-	public void flashcard();
+	public IFlashCard getFlashCard();
 	
 	/**
-	 * bag of words event
+	 * @return bag of words event
 	 */
-	public void bagOfWords();
+	public IBagOfWords getBagOfWords();
 }
