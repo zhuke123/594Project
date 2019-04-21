@@ -1,6 +1,5 @@
 @startuml
 
-
 class User{
     -wordCount:int
     -username:String
