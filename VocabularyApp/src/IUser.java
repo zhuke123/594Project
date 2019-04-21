@@ -20,4 +20,7 @@ public interface IUser {
 	 * @return bag of words event
 	 */
 	public IBagOfWords getBagOfWords();
+	
+	//lalal demaxiya
+	
 }
