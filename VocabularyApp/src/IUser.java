@@ -21,6 +21,4 @@ public interface IUser {
 	 */
 	public IBagOfWords getBagOfWords();
 	
-	//lalal demaxiya
-	
 }
