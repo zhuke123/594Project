@@ -2,20 +2,19 @@ import java.util.Set;
 
 public interface IWord {
 	
-	/**
-	 * set Word's frequency
-	 */
-	public void setFreq();
+	
 	
 	/**
-	 * set Word's timeStamp according to review interval
+	 * after reviewing, set the timeStamp--
 	 */
 	public void updateTimeStamp();
 	
 	/**
-	 * update Word's value according to users' feedback
+	 * update according to users' feedback
+	 * if status = 0, feedback + 2;
+	 * if status = 1, feedback - 100;, add it into set.
 	 */
-	public void updateValue();
+	public void updateFeedback(int status);
 	
 	/**
 	 * add the test number into the test set
@@ -39,17 +38,6 @@ public interface IWord {
 	 */
 	public int getFreq();
 	
-	/**
-	 * timeStamp indicates how long is the time interval
-	 * @return  Word.timestamp
-	 */
-	public int getTimestamp();
-	
-	/**
-	 * value indicates user's feedback
-	 * @return Word.value
-	 */
-	public int getValue();
 	
 	/**
 	 * weight is the sum of frequency, timeStamp, and user's feedback

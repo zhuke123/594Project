@@ -22,4 +22,7 @@ public interface IUser {
 	public IBagOfWords getBagOfWords();
 	
 	//???
+
+	//lalaal
+
 }
