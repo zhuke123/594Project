@@ -16,10 +16,7 @@ public interface IWord {
 	 */
 	public void updateFeedback(int status);
 	
-	/**
-	 * add the test number into the test set
-	 */
-	public void addToSet();
+	
 	
 	/**
 	 * update weight: sum up value, timeStamp, freq
@@ -39,11 +36,6 @@ public interface IWord {
 	public int getFreq();
 	
 	
-	/**
-	 * weight is the sum of frequency, timeStamp, and user's feedback
-	 * @return Word.weight
-	 */
-	public int getWeight();
 	
 	/**
 	 * 
