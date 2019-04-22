@@ -7,7 +7,7 @@ public interface IUser {
 	public int getWordCount();
 	
 	/**
-	 * @return username
+	 * @return user's name
 	 */
 	public String getUsername();
 	
