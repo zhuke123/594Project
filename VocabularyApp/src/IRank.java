@@ -13,13 +13,13 @@ public interface IRank {
 	 * and print the result
 	 * @param userName
 	 */
-	public void searchRank(String user);
+	public void searchRank(IUser user);
 	
 	/**
 	 * this will update how many words the user have memorized
 	 * @param user
 	 */
-	public void updateRank(String user);
+	public void updateRank(IUser user);
 	
 	
 	
