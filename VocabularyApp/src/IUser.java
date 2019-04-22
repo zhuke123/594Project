@@ -22,9 +22,11 @@ public interface IUser {
 	public IBagOfWords getBagOfWords();
 	
 
-	//cdikjdlcdcddddd
 
+	//cdikjdlcdcddddd
 	//csbhjcbscjh
+	//here
+
 
 
 }
