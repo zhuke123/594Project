@@ -11,43 +11,47 @@ class Rank {
     -users:List<User>
     +showRank():String
     +getRank(String username):int
-    +getUser(int rank):String
-    
+    +getUser(int rank):String   
 }
 
 class Program {
     -users:List<User>
     -dict:Dictionary
     -rank:Rank
+    -init():void
+    +main:static void
 }
 
 
 class Dictionary {
     -wordList:List<Word>
-    +readFile():boolean
+    +readFile(String filename):boolean
     +handleRequest(Event e):boolean
 }
 
 interface Event {
     -type:String
+    +createDataStructure(List<Word>):boolean
 }
 
 class FlashCard implements Event {
-    -PriorityQueue<Word> heap
-    +createHeap(List<Word>):PriorityQueue<Word>
+    -heap:PriorityQueue<Word>
     +getFlashCard():Word
+    +insert(Word):void
 }
 
 class BagOfWords implements Event {
-    +createSet(List<Word>):Set<String>
+    -topWords:Set<Word>
     +getBag(int size):Set<String>
 }
 
 class Word {
+    -content:String
     -freq:int
+    -time:int
+    -value:int
     -tests:Set<Integer>
-    +getFreq():int
-    +getTests():Set<Integer>
+    +getValue():int
 }
 
 Program "1" *--> "0.*" User
@@ -59,7 +63,7 @@ Dictionary "1" o--> "0.*" Word
 User "1" *--> "1" FlashCard
 User "1" *--> "1" BagOfWords
 
-Flashcard "1" o--> "0.*" Word
+FlashCard "1" o--> "0.*" Word
 BagOfWords "1" o--> "0.*" Word
 Rank "1" o--> "1.*" User
 

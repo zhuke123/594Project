@@ -1,9 +1,7 @@
 import java.util.Set;
 
 public interface IWord {
-	
-	
-	
+		
 	/**
 	 * after reviewing, set the timeStamp--
 	 */
@@ -36,16 +34,10 @@ public interface IWord {
 	public int getFreq();
 	
 	
-	
 	/**
 	 * 
 	 * @return the set containing the text number the word is in
 	 */
-	public Set<Integer> getSet();
-	
-	
-	
-	
-	
+	public Set<Integer> getSet();	
 
 }

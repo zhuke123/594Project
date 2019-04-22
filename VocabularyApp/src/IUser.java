@@ -7,7 +7,7 @@ public interface IUser {
 	public int getWordCount();
 	
 	/**
-	 * @return username
+	 * @return user's name
 	 */
 	public String getUsername();
 	
@@ -20,6 +20,5 @@ public interface IUser {
 	 * @return bag of words event
 	 */
 	public IBagOfWords getBagOfWords();
-	
 
 }
