@@ -5,7 +5,12 @@ public interface IProgram {
 	/**
 	 * @return list of users
 	 * */
-	public List<IUser> getDict();
+	public IDictionary getDict();
+	
+	/**
+	 * @return list of users
+	 * */
+	public List<IUser> getUsers();
 	
 	/**
 	 * 
@@ -14,8 +19,15 @@ public interface IProgram {
 	public IRank getRank();
 	
 	/**
-	 * initiate the program
+	 * @return user
 	 */
-	public void init();
+	public IUser getUser(String name);
+	
+	/**
+	 * @return user
+	 */
+	public IUser getUser(int idx);
+	
+	
 
 }
