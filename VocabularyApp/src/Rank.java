@@ -20,8 +20,7 @@ public class Rank implements IRank {
 
 	@Override
 	public void updateRank(IUser user) {
-		if(this.usersList.contains(user))
-
+		
 	}
 
 }
