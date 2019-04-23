@@ -4,25 +4,28 @@ import java.util.Set;
 public class Word implements IWord {
 	
 	//word data
-	String data;
+	private String data;
 	//source text of this word
-	int source;
+	private int source;
 	//record how many times we still need to memorize the word
 	//initially this will set to 3
 	//so the user will need to memorize the word three times
 	//then this word will probably never appear again
-	int timeStamp;
+	private int timeStamp;
 	//frequencies of this word in the text
-	int frequency;
+	private int frequency;
 	//weight of this word in heap
-	double weight;
+	private double weight;
 	//this will contain all the texts that contain
-	Set<Integer> textSources;
+	private Set<Integer> textSources;
+	
+	private int init_timeStamp;
 	
 	public Word(String data, int source, int frequency){
 		this.data = data;
 		this.source = source;
 		this.timeStamp = 3;
+		this.init_timeStamp = 3;
 		this.frequency = frequency;
 		this.weight = frequency;
 		textSources = new HashSet<Integer>();
@@ -32,16 +35,18 @@ public class Word implements IWord {
 	public void updateTimeStamp() {
 		this.timeStamp--;
 	}
-
+	public int getTimeStamp() {
+		return this.timeStamp;
+	}
 	@Override
 	public void updateFeedback(int status) {
 		//0 means the user doesn't know the word
 		if(status == 0) {
-			this.weight += this.frequency / this.timeStamp;
+			this.weight += this.frequency / this.init_timeStamp;
 		}
 		//1 means the user knows the word
 		else if(status == 1) {
-			this.weight -= this.frequency / this.timeStamp;
+			this.weight -= this.frequency / this.init_timeStamp;
 		}
 		else {
 			throw new IllegalStateException("update option should be 0 / 1");
@@ -51,6 +56,10 @@ public class Word implements IWord {
 	@Override
 	public void updateWeight() {
 		
+	}
+	
+	public double getWeight() {
+		return this.weight;
 	}
 
 	@Override
@@ -66,6 +75,11 @@ public class Word implements IWord {
 	@Override
 	public Set<Integer> getSet() {
 		return this.textSources;
+	}
+	@Override
+	public String getDefinition() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
