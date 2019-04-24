@@ -10,7 +10,9 @@ public class Dictionary implements IDictionary {
 	
 	public Dictionary(String filename) {
 		wordList = new ArrayList<>();
-		readFile(filename);
+		if(readFile(filename)) {
+			System.out.println("Successfully create a dictionary");
+		}
 	}
 
 	@Override
@@ -33,8 +35,9 @@ public class Dictionary implements IDictionary {
 				for(String t : pas) {
 					cur.addSource(Integer.parseInt(t));
 				}
-				System.out.println(cur.getWord() + ": " + cur.getFreq() + " " + cur.getTextSources().size());
+				wordList.add(cur);
 			}
+			return true;
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		} catch (IOException e) {
