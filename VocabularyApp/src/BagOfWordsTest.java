@@ -21,9 +21,9 @@ public class BagOfWordsTest {
 	@Test
 	public void testCreateDataStructure(){
 		Event e1 = new BagOfWords();
-		Word word1 = new Word("a", 4);
-		Word word2 = new Word("b", 5);
-		Word word3 = new Word("c", 5);
+		Word word1 = new Word("a", "lalala", 4);
+		Word word2 = new Word("b", "lalala", 5);
+		Word word3 = new Word("c", "lalala", 5);
 		List<IWord> l1= new ArrayList<IWord>();
 		l1.add(word1);
 		l1.add(word2);
@@ -34,9 +34,9 @@ public class BagOfWordsTest {
 	@Test
 	public void testGetBag(){
 		BagOfWords e1 = new BagOfWords();
-		Word word1 = new Word("a", 4);
-		Word word2 = new Word("b", 5);
-		Word word3 = new Word("c", 5);
+		Word word1 = new Word("a", "lalala", 4);
+		Word word2 = new Word("b", "lalala", 5);
+		Word word3 = new Word("c", "lalala", 5);
 		List<IWord> l1= new ArrayList<IWord>();
 		l1.add(word1);
 		l1.add(word2);
