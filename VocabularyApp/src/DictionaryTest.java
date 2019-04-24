@@ -25,6 +25,7 @@ public class DictionaryTest {
 		FlashCard card = new FlashCard();
 		assertTrue(dict.handleRequest(card));
 		BagOfWords bag = new BagOfWords();
+		
 		assertTrue(dict.handleRequest(bag));
 	}
 

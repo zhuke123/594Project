@@ -21,10 +21,14 @@ public class ProgramTest {
 	@Test
 	public void testGetUserString() {
 		assertTrue(m.getUser("ds") == null);
+		assertTrue(m.addUsers("dsa"));
+		assertTrue(m.getUser("dsa").getUsername().equals("dsa"));
 	}
 
 	@Test
 	public void testGetUserInt() {
+		assertTrue(m.addUsers("dsa"));
+		assertTrue(m.getUser(0).getUsername().equals("dsa"));
 		assertTrue(m.getUser(2) == null);
 	}
 
@@ -35,7 +39,9 @@ public class ProgramTest {
 	
 	@Test
 	public void testAddUsers() {
+		assertTrue(m.addUsers("dsa"));
 		assertFalse(m.addUsers("dsa"));
+		assertFalse(m.addUsers(null));
 	}
 
 }

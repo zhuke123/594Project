@@ -3,14 +3,16 @@ import java.util.*;
 public class Program implements IProgram {
 
 	
-	private IDictionary dict;
-	private List<IUser> users;
-	private IRank rank;
+	private IDictionary dict = null;
+	private List<IUser> users = null;
+	private IRank rank = null;
+	private HashSet<String> usernames;
 	
 	public Program(String filename) {
 		dict = new Dictionary(filename);
 		users = new ArrayList<>();
 		rank = new Rank();
+		usernames = new HashSet<>();
 	}
 
 	@Override
@@ -48,7 +50,11 @@ public class Program implements IProgram {
 
 	@Override
 	public boolean addUsers(String username) {
-		return false;
+		if(username == null || usernames.contains(username))
+			return false;
+		usernames.add(username);
+		users.add(new User(username));
+		return true;
 	}
 	
 	public static void main(String[] arg) {

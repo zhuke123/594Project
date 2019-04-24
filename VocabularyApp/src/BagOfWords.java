@@ -6,6 +6,7 @@ public class BagOfWords implements IBagOfWords{
 	
 	Set<Word> bagOfWord;
 	List<IWord> listOfWord;
+	int size;	
 
 	@Override
 	public String type() {
