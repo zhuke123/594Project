@@ -36,5 +36,12 @@ public class Rank implements IRank {
 		Collections.reverse(this.usersList);
 	}
 	
+	public void addUser(IUser user) {
+		if(this.usersList.contains(user))
+			return;
+		else
+			this.usersList.add(user);
+	}
+	
 
 }

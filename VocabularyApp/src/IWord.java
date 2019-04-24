@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public interface IWord {
+public interface IWord extends Comparable<IWord>{
 		
 	/**
 	 * after reviewing, set the timeStamp--
@@ -45,5 +45,7 @@ public interface IWord {
 	 * get word definition
 	 */
 	public String getDefinition();
+	
+	public double getWeight();
 
 }

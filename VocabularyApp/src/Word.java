@@ -56,7 +56,7 @@ public class Word implements IWord {
 	public void updateWeight(double weight) {
 		this.weight = weight;
 	}
-	
+	@Override
 	public double getWeight() {
 		return this.weight;
 	}
@@ -86,6 +86,17 @@ public class Word implements IWord {
 	
 	public void addSource(int source) {
 		this.textSources.add(source);
+	}
+	@Override
+	public int compareTo(IWord o) {
+		if(this.weight < o.getWeight())
+			return -1;
+		else {
+			if(this.weight == o.getWeight())
+				return 0;
+			else
+				return 1;
+		}
 	}
 
 }
