@@ -10,7 +10,9 @@ public class Dictionary implements IDictionary {
 	
 	public Dictionary(String filename) {
 		wordList = new ArrayList<>();
-		readFile(filename);
+		if(readFile(filename)) {
+			System.out.println("Successfully create a dictionary");
+		}
 	}
 
 	@Override
@@ -33,8 +35,9 @@ public class Dictionary implements IDictionary {
 				for(String t : pas) {
 					cur.addSource(Integer.parseInt(t));
 				}
-				System.out.println(cur.getWord() + ": " + cur.getFreq() + " " + cur.getTextSources().size());
+				wordList.add(cur);
 			}
+			return true;
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		} catch (IOException e) {
@@ -45,11 +48,15 @@ public class Dictionary implements IDictionary {
 
 	@Override
 	public boolean handleRequest(Event event) {
-		if(event.type().equals("FlashCard")) {
-			
+		if(event.type().equals("flashcard")) {
+			FlashCard flashCard = (FlashCard)event;
+			flashCard.createDataStructure(wordList);
+			return true;
 		}
-		else if(event.type().equals("BagOfWords")) {
-			
+		else if(event.type().equals("bag")) {
+			BagOfWords bagOfWords = (BagOfWords)event;
+			bagOfWords.createDataStructure(wordList);
+			return true;
 		}
 		return false;
 	}

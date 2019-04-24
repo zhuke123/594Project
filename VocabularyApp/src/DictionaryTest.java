@@ -1,27 +1,31 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class DictionaryTest {
+import java.util.*;
+
+public class DictionaryTest {
 
 	@Test
-	void testDictionary() {
+	public void testGetWords() {
 		Dictionary dict = new Dictionary("Dictionary.txt");
+		List<IWord> words = dict.getWords();
+		assertEquals(words.size(), 5375);
 	}
 
 	@Test
-	void testGetWords() {
-		fail("Not yet implemented");
+	public void testReadFile() {
+		Dictionary dict = new Dictionary("Dictionary.txt");
+		assertFalse(dict.readFile("sda"));		
 	}
 
 	@Test
-	void testReadFile() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testHandleRequest() {
-		fail("Not yet implemented");
+	public void testHandleRequest() {
+		Dictionary dict = new Dictionary("Dictionary.txt");
+		FlashCard card = new FlashCard();
+		assertTrue(dict.handleRequest(card));
+		BagOfWords bag = new BagOfWords();
+		assertTrue(dict.handleRequest(bag));
 	}
 
 }
