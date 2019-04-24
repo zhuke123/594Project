@@ -19,7 +19,7 @@ public interface IWord {
 	/**
 	 * update weight: sum up value, timeStamp, freq
 	 */
-	public void updateWeight();
+	public void updateWeight( double weight);
 	
 	/**
 	 * 
