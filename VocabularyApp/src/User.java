@@ -2,14 +2,18 @@
 public class User implements IUser{
 	String userName;
 	int knownWords;
+	IFlashCard falshCard;
 	
 	public User(String name) {
 		this.userName = name;
+		this.knownWords = 0;
+		this.falshCard = new FlashCard();
+		
+		
 	}
 	@Override
 	public int getWordCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.knownWords;
 	}
 	
 	@Override
@@ -19,8 +23,7 @@ public class User implements IUser{
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userName;
 	}
 
 	@Override
