@@ -46,6 +46,10 @@ public interface IWord extends Comparable<IWord>{
 	 */
 	public String getDefinition();
 	
+	/**
+	 * 
+	 * @return weight of the word
+	 */
 	public double getWeight();
 
 }

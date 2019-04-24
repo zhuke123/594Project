@@ -25,5 +25,24 @@ class IWordTest {
 		word1.updateWeight(0.22);
 		assertEquals(word1.getWeight(), 0.22, 0.000000001);
 	}
-
+	@Test
+	void testCompareTo() {
+		Word word1 = new Word("a", 4);
+		Word word2 = new Word("b", 5);
+		Word word3 = new Word("c", 5);
+		assertEquals(word1.compareTo(word2), -1);
+		assertEquals(word2.compareTo(word3), 0);
+		assertEquals(word2.compareTo(word1), 1);
+	}
+	
+	@Test
+	void testGetTextSources() {
+		Word word1 = new Word("a", 4);
+		assertTrue(word1.getTextSources().isEmpty());
+		word1.addSource(1);
+		word1.addSource(2);
+		assertTrue(word1.getTextSources().contains(1));
+		assertTrue(word1.getTextSources().contains(2));
+		
+	}
 }
