@@ -41,11 +41,11 @@ public class Word implements IWord {
 	public void updateFeedback(int status) {
 		//0 means the user doesn't know the word
 		if(status == 0) {
-			this.weight += this.frequency / this.init_timeStamp;
+			this.weight += this.frequency * 1.0 / this.init_timeStamp;
 		}
 		//1 means the user knows the word
 		else if(status == 1) {
-			this.weight -= this.frequency / this.init_timeStamp;
+			this.weight -= this.frequency * 1.0 / this.init_timeStamp;
 		}
 		else {
 			throw new IllegalStateException("update option should be 0 / 1");
