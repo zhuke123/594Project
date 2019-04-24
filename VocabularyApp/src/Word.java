@@ -78,8 +78,7 @@ public class Word implements IWord {
 	}
 	@Override
 	public String getDefinition() {
-		// TODO Auto-generated method stub
-		return null;
+		return data;
 	}
 
 }
