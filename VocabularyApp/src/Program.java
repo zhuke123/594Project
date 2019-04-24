@@ -36,12 +36,23 @@ public class Program implements IProgram {
 
 	@Override
 	public IUser getUser(int idx) {
+		if(idx < 0 || idx >= users.size())
+			return null;
 		return users.get(idx);
 	}
 
 	@Override
 	public IDictionary getDict() {
 		return dict;
+	}
+
+	@Override
+	public boolean addUsers(String username) {
+		return false;
+	}
+	
+	public static void main(String[] arg) {
+		
 	}
 
 }

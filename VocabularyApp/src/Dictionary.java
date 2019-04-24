@@ -48,11 +48,15 @@ public class Dictionary implements IDictionary {
 
 	@Override
 	public boolean handleRequest(Event event) {
-		if(event.type().equals("FlashCard")) {
-			
+		if(event.type().equals("flashcard")) {
+			FlashCard flashCard = (FlashCard)event;
+			flashCard.createDataStructure(wordList);
+			return true;
 		}
-		else if(event.type().equals("BagOfWords")) {
-			
+		else if(event.type().equals("bag")) {
+			BagOfWords bagOfWords = (BagOfWords)event;
+			bagOfWords.createDataStructure(wordList);
+			return true;
 		}
 		return false;
 	}
