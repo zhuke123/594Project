@@ -1,11 +1,11 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class IWordTest {
+public class WordTest {
 
 	@Test
-	void testUpdateTimeStamp() {
+	public void testUpdateTimeStamp() {
 		Word word1 = new Word("a", "lalala", 4);
 		word1.updateFeedback(1);
 		word1.updateTimeStamp();
@@ -13,30 +13,30 @@ class IWordTest {
 	}
 
 	@Test
-	void testUpdateFeedback() {
+	public void testUpdateFeedback() {
 		Word word1 = new Word("a", "lalala", 4);
 		word1.updateFeedback(1);
 		assertEquals(word1.getWeight(), 8 / 3, 0.000000001);
 	}
 
 	@Test
-	void testUpdateWeight() {
+	public void testUpdateWeight() {
 		Word word1 = new Word("a", "lalala", 4);
 		word1.updateWeight(0.22);
 		assertEquals(word1.getWeight(), 0.22, 0.000000001);
 	}
 	@Test
-	void testCompareTo() {
+	public void testCompareTo() {
 		Word word1 = new Word("a", "lalala", 4);
 		Word word2 = new Word("b", "lalala", 5);
 		Word word3 = new Word("c", "lalala", 5);
-		assertEquals(word1.compareTo(word2), -1);
+		assertEquals(word1.compareTo(word2), 1);
 		assertEquals(word2.compareTo(word3), 0);
-		assertEquals(word2.compareTo(word1), 1);
+		assertEquals(word2.compareTo(word1), -1);
 	}
 	
 	@Test
-	void testGetTextSources() {
+	public void testGetTextSources() {
 		Word word1 = new Word("a", "lalala", 4);
 		assertTrue(word1.getTextSources().isEmpty());
 		word1.addSource(1);
@@ -45,4 +45,5 @@ class IWordTest {
 		assertTrue(word1.getTextSources().contains(2));
 		
 	}
+
 }
