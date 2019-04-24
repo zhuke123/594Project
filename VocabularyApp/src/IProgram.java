@@ -13,6 +13,12 @@ public interface IProgram {
 	public List<IUser> getUsers();
 	
 	/**
+	 * if no duplicate username
+	 * @return whether successfully add a user
+	 */
+	public boolean addUsers(String username);
+	
+	/**
 	 * 
 	 * @return ranking system
 	 */
