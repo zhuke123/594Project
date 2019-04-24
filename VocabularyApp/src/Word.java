@@ -21,7 +21,7 @@ public class Word implements IWord {
 	
 	private int init_timeStamp;
 	
-	public Word(String data, int frequency){
+	public Word(String data, String definition, int frequency){
 		this.data = data;
 		this.timeStamp = 3;
 		this.init_timeStamp = 3;
@@ -90,12 +90,12 @@ public class Word implements IWord {
 	@Override
 	public int compareTo(IWord o) {
 		if(this.weight < o.getWeight())
-			return -1;
+			return 1;
 		else {
 			if(this.weight == o.getWeight())
 				return 0;
 			else
-				return 1;
+				return -1;
 		}
 	}
 
