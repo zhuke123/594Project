@@ -14,21 +14,23 @@ public class Rank implements IRank {
 		Collections.reverse(this.usersList);
 		for(int i = 0 ; i < this.usersList.size();i++) {
 			IUser temp = this.usersList.get(i);
-			System.out.println(temp.getUsername() + " Rank : " + (this.usersList.indexOf(temp) + 1)
+			System.out.println(temp.getUsername() + " Rank : " + (i + 1)
 			+ " Known words : " + temp.getWordCount());	
 		}
 
 	}
 
 	@Override
-	public void searchRank(IUser user) {
+	public boolean searchRank(String userName) {
 		Collections.reverse(this.usersList);
-		if(this.usersList.contains(user)) {
-			System.out.println(user.getUsername() + " Rank : " + this.usersList.indexOf(user));
+		for(int i = 0; i < this.usersList.size(); i ++) {
+			if(this.usersList.get(i).getUsername().equals(userName)) {
+				System.out.println(userName + " Rank : " + (i + 1));
+				return true;
+			}
 		}
-		else {
-			System.out.println("user is not in database, cant get rank");
-		}
+		System.out.println("user is not in database, cant get rank");
+		return false;
 	}
 
 	@Override
@@ -38,7 +40,7 @@ public class Rank implements IRank {
 	
 	public void addUser(IUser user) {
 		if(this.usersList.contains(user))
-			return;
+			return ;
 		else
 			this.usersList.add(user);
 	}
