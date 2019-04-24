@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class WordTest2 {
+public class WordTest {
 
 	@Test
 	public void testUpdateTimeStamp() {
@@ -16,7 +16,7 @@ public class WordTest2 {
 	public void testUpdateFeedback() {
 		Word word1 = new Word("a", "lalala", 4);
 		word1.updateFeedback(1);
-		assertEquals(word1.getWeight(), 8 / 3, 0.000000001);
+		assertEquals(word1.getWeight(), 8.0 / 3, 0.000000001);
 	}
 
 	@Test
@@ -30,9 +30,9 @@ public class WordTest2 {
 		Word word1 = new Word("a", "lalala", 4);
 		Word word2 = new Word("b", "lalala", 5);
 		Word word3 = new Word("c", "lalala", 5);
-		assertEquals(word1.compareTo(word2), -1);
+		assertEquals(word1.compareTo(word2), 1);
 		assertEquals(word2.compareTo(word3), 0);
-		assertEquals(word2.compareTo(word1), 1);
+		assertEquals(word2.compareTo(word1), -1);
 	}
 	
 	@Test
@@ -45,4 +45,5 @@ public class WordTest2 {
 		assertTrue(word1.getTextSources().contains(2));
 		
 	}
+
 }
