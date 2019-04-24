@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Dictionary implements IDictionary {
@@ -16,7 +20,26 @@ public class Dictionary implements IDictionary {
 
 	@Override
 	public boolean readFile(String filename) {
-		
+		try {
+			BufferedReader b = new BufferedReader(new FileReader(filename));
+			String line;
+			while((line = b.readLine()) != null) {
+				String word = line;
+				String def = b.readLine();
+				int freq = Integer.parseInt(b.readLine());					
+				Word cur = new Word(word, def, freq);
+				
+				String[] pas = b.readLine().split(" ");
+				for(String t : pas) {
+					cur.addSource(Integer.parseInt(t));
+				}
+				System.out.println(cur.getWord() + ": " + cur.getFreq() + " " + cur.getTextSources().size());
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+		} catch (IOException e) {
+			System.out.println("Not able to read file");
+		}
 		return false;
 	}
 

@@ -6,7 +6,6 @@
 /IRank.class
 /IUser.class
 /IWord.class
-
 /Dictionary.class
 /IRankTest.class
 /IWordTest.class
@@ -17,3 +16,5 @@
 /IFlashCardTest.class
 /FlashCard.class
 /FlashCardTest.class
+/UserTest.class
+/DictionaryTest.class
