@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public interface IWord {
+public interface IWord extends Comparable<IWord>{
 		
 	/**
 	 * after reviewing, set the timeStamp--
@@ -38,12 +38,18 @@ public interface IWord {
 	 * 
 	 * @return the set containing the text number the word is in
 	 */
-	public Set<Integer> getSet();	
+	public Set<Integer> getTextSources();	
 	
 	
 	/**
 	 * get word definition
 	 */
 	public String getDefinition();
+	
+	/**
+	 * 
+	 * @return weight of the word
+	 */
+	public double getWeight();
 
 }
