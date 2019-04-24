@@ -54,8 +54,8 @@ public class Word implements IWord {
 	}
 
 	@Override
-	public void updateWeight() {
-		
+	public void updateWeight(double weight) {
+		this.weight = weight;
 	}
 	
 	public double getWeight() {

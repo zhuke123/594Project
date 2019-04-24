@@ -22,8 +22,8 @@ class IWordTest {
 	@Test
 	void testUpdateWeight() {
 		Word word1 = new Word("a", 1, 4);
-		word1.updateFeedback(1);
-		assertEquals(word1.getWeight(), 8 / 3, 0.000000001);
+		word1.updateWeight(0.22);
+		assertEquals(word1.getWeight(), 0.22, 0.000000001);
 	}
 
 }
