@@ -72,7 +72,7 @@ public class Word implements IWord {
 	}
 
 	@Override
-	public Set<Integer> getSet() {
+	public Set<Integer> getTextSources() {
 		return this.textSources;
 	}
 	@Override
@@ -82,10 +82,6 @@ public class Word implements IWord {
 	
 	public void setDefinition(String definition) {
 		this.definition = definition;
-	}
-	
-	public Set<Integer> getSource() {
-		return this.textSources;
 	}
 	
 	public void addSource(int source) {

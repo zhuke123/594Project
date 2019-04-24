@@ -38,7 +38,7 @@ public interface IWord {
 	 * 
 	 * @return the set containing the text number the word is in
 	 */
-	public Set<Integer> getSet();	
+	public Set<Integer> getTextSources();	
 	
 	
 	/**
