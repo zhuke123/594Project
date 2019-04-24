@@ -5,8 +5,8 @@ public class Word implements IWord {
 	
 	//word data
 	private String data;
-	//source text of this word
-	private int source;
+	//word definition
+	private String definition;
 	//record how many times we still need to memorize the word
 	//initially this will set to 3
 	//so the user will need to memorize the word three times
@@ -21,9 +21,8 @@ public class Word implements IWord {
 	
 	private int init_timeStamp;
 	
-	public Word(String data, int source, int frequency){
+	public Word(String data, int frequency){
 		this.data = data;
-		this.source = source;
 		this.timeStamp = 3;
 		this.init_timeStamp = 3;
 		this.frequency = frequency;
@@ -78,8 +77,19 @@ public class Word implements IWord {
 	}
 	@Override
 	public String getDefinition() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.definition;
+	}
+	
+	public void setDefinition(String definition) {
+		this.definition = definition;
+	}
+	
+	public Set<Integer> getSource() {
+		return this.textSources;
+	}
+	
+	public void addSource(int source) {
+		this.textSources.add(source);
 	}
 
 }
