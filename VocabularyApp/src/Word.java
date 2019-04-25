@@ -27,6 +27,7 @@ public class Word implements IWord {
 		this.init_timeStamp = 3;
 		this.frequency = frequency;
 		this.weight = frequency;
+		this.definition = definition;
 		textSources = new HashSet<Integer>();
 		
 	}
