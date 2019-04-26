@@ -60,7 +60,7 @@ public class Word implements IWord {
 			this.weight -= this.frequency * 1.0 / this.init_timeStamp;
 		}
 		else {
-			throw new IllegalStateException("update option should be 0 / 1");
+			System.out.println("illegal status of feedback");
 		}
 	}
 
@@ -110,5 +110,6 @@ public class Word implements IWord {
 				return -1;
 		}
 	}
+	
 
 }

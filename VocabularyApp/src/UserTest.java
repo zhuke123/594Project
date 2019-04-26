@@ -12,7 +12,7 @@ public class UserTest {
 		user2.setWordCount(20);
 		User user3 = new User("c");
 		user3.setWordCount(20);
-		
+		assertTrue(user1.getUsername().equals("a"));
 		assertTrue(user1.compareTo(user2) < 0);
 		assertTrue(user2.compareTo(user3) == 0);
 		assertTrue(user2.compareTo(user1) > 0);
