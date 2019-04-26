@@ -9,6 +9,11 @@ public class Rank implements IRank {
 	public Rank() {
 		usersList = new ArrayList<IUser>();
 	}
+	
+	public Rank(List<IUser> usersList) {
+		this.usersList = usersList;
+	}
+	
 	@Override
 	public void showAllRank() {
 		Collections.reverse(this.usersList);
