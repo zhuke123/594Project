@@ -32,7 +32,6 @@ public class Word implements IWord {
 		this.definition = definition;
 		textSources = new HashSet<Integer>();
 		this.time = System.currentTimeMillis();
-		
 	}
 	@Override
 	public void updateTimeStamp() {
@@ -42,7 +41,6 @@ public class Word implements IWord {
 	public long getTime() {
 		return this.time;
 	}
-	
 	@Override
 	public void updateTime() {
 		this.time = System.currentTimeMillis();
