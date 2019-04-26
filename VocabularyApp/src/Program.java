@@ -56,9 +56,5 @@ public class Program implements IProgram {
 		users.add(new User(username));
 		return true;
 	}
-	
-	public static void main(String[] arg) {
-		
-	}
 
 }
