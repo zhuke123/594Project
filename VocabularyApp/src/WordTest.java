@@ -48,7 +48,19 @@ public class WordTest {
 	
 	@Test
 	public void testUpdateTime() {
-		Word word1 = new Word("a", "lalala", 4);
+		Word word1 = new Word("a", "lalala", 3);
+		word1.getTime();
+		word1.updateTime();
+		word1.updateFeedback(0);
+		assertEquals(word1.getWeight(), 4.0, 0.000000001);
+		word1.updateFeedback(1);
+		word1.updateFeedback(33);
+		assertEquals(word1.getWeight(), 3.0, 0.000000001);
+		assertEquals(word1.getFreq(),3);
+		assertEquals(word1.getWord(),"a");
+		assertEquals(word1.getDefinition(),"lalala");
+		word1.setDefinition("qwer");
+		assertEquals(word1.getDefinition(),"qwer");
 	}
 
 }
