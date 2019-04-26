@@ -18,6 +18,8 @@ public class Word implements IWord {
 	private double weight;
 	//this will contain all the texts that contain
 	private Set<Integer> textSources;
+	//time last updated
+	long time;
 	
 	private int init_timeStamp;
 	
@@ -29,12 +31,23 @@ public class Word implements IWord {
 		this.weight = frequency;
 		this.definition = definition;
 		textSources = new HashSet<Integer>();
+		this.time = System.currentTimeMillis();
 		
 	}
 	@Override
 	public void updateTimeStamp() {
 		this.timeStamp--;
 	}
+	@Override
+	public long getTime() {
+		return this.time;
+	}
+	
+	@Override
+	public void updateTime() {
+		this.time = System.currentTimeMillis();
+	}
+	
 	public int getTimeStamp() {
 		return this.timeStamp;
 	}
