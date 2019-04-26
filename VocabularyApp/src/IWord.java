@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Set;
 
 public interface IWord extends Comparable<IWord>{
@@ -51,5 +52,18 @@ public interface IWord extends Comparable<IWord>{
 	 * @return weight of the word
 	 */
 	public double getWeight();
+	
+	/**
+	 * 
+	 * @return last updated date of this word
+	 */
+	public long getTime();
+	
+	/**
+	 * update time 
+	 */
+	public void updateTime();
+	
+	
 
 }

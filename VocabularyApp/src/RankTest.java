@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public  class IRankTest {
+public  class RankTest {
 
 	@Test
 	public void testShowAllRank() {

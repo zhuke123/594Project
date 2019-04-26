@@ -11,7 +11,7 @@ public class Program implements IProgram {
 	public Program(String filename) {
 		dict = new Dictionary(filename);
 		users = new ArrayList<>();
-		rank = new Rank();
+		rank = new Rank(users);
 		usernames = new HashSet<>();
 	}
 
@@ -55,10 +55,6 @@ public class Program implements IProgram {
 		usernames.add(username);
 		users.add(new User(username));
 		return true;
-	}
-	
-	public static void main(String[] arg) {
-		
 	}
 
 }

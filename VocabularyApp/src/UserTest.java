@@ -2,10 +2,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-class UserTest {
+public class UserTest {
 
 	@Test
-	void testCompareTo() {
+	public void testCompareTo() {
 		User user1 = new User("a");
 		user1.setWordCount(10);
 		User user2 = new User("b");

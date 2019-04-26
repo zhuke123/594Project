@@ -45,5 +45,10 @@ public class WordTest {
 		assertTrue(word1.getTextSources().contains(2));
 		
 	}
+	
+	@Test
+	public void testUpdateTime() {
+		Word word1 = new Word("a", "lalala", 4);
+	}
 
 }
