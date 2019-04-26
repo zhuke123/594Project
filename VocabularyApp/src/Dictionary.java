@@ -10,8 +10,8 @@ public class Dictionary implements IDictionary {
 	
 	public Dictionary(String filename) {
 		wordList = new ArrayList<>();
-		if(readFile(filename)) {
-			System.out.println("Successfully create a dictionary");
+		if(!readFile(filename)) {
+			System.out.println("Fail to read file");
 		}
 	}
 
