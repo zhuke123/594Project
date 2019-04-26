@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public  class IRankTest {
+public  class RankTest {
 
 	@Test
 	public void testShowAllRank() {
