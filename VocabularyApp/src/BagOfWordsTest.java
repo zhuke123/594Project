@@ -46,5 +46,33 @@ public class BagOfWordsTest {
 		s1.add("a");
 		assertEquals(e1.getBag(1),s1);
 	}
+	
+	@Test
+	public void testhelper() {
+		Set<IWord> setOfWord = new HashSet<IWord>();
+		Word w1 = new Word("apple","fruit",5);
+		Word w2 = new Word("milk","drink",10);
+		Word w3 = new Word("cola","drink",13);
+		Word w4 = new Word("bag","container",7);
+		Word w5 = new Word("flag","fds",7);
+		setOfWord.add(w4);
+		setOfWord.add(w3);
+		setOfWord.add(w2);
+		setOfWord.add(w1);
+		setOfWord.add(w5);
+		BagOfWords e1 = new BagOfWords();
+		Set<HashSet<IWord>> key = new HashSet<HashSet<IWord>>();
+		HashSet<IWord> currentSet = new HashSet<IWord>();
+		e1.generateBag(setOfWord, 2, key, currentSet);
+		for(HashSet<IWord> i: key) {
+			for(IWord w: i) {
+				System.out.print(w.getWord());
+				System.out.print("  ");
+			}
+			System.out.print("\n");
+		}
+	}
+ 
+	
 
 }
