@@ -1,0 +1,14 @@
+1. create program(filename), a program to run the app;
+
+2.program would initiate a dictionary(read from the filenmae), an empty user list, and a rank system
+
+3.then we should get input from the UI to input username and add new user using addUser(username)
+
+4.a new user would have two events, one is flashcard(create data structure, another is bagofwords
+ we can initiate the activity by word flashcard or bagofwords, using the program.Dictionary.handleReuqest(event e)
+ to call the inbuilt function create data structure for the events
+ 
+ 5.then we can start the events for the user, 
+update feedback(time, known) of words, then flashcard.insert back to the flashcard heap
+
+6.we should be able to swicth between users using getuser() in program and get rank in the program Rank system, getRank()
