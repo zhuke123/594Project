@@ -8,6 +8,8 @@ public class User implements IUser{
 	public User(String name) {
 		this.userName = name;
 		this.knownWords = 0;
+		flashCard = new FlashCard();
+		bagOfWords = new BagOfWords();
 	}
 	
 	@Override
@@ -27,7 +29,7 @@ public class User implements IUser{
 
 	@Override
 	public IFlashCard getFlashCard() {
-		return this.getFlashCard();
+		return flashCard;
 	}
 	
 	public void setFlashCard(IFlashCard flashCard) {

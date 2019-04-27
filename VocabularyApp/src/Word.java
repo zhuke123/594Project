@@ -31,7 +31,7 @@ public class Word implements IWord {
 		this.weight = frequency;
 		this.definition = definition;
 		textSources = new HashSet<Integer>();
-		this.time = System.currentTimeMillis();
+		this.time = -1;
 	}
 	@Override
 	public void updateTimeStamp() {
