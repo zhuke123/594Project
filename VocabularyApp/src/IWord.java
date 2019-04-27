@@ -12,6 +12,7 @@ public interface IWord extends Comparable<IWord>{
 	 * update according to users' feedback
 	 * if status = 0, feedback + 2;
 	 * if status = 1, feedback - 100;, add it into set.
+	 * @param status of the feedback
 	 */
 	public void updateFeedback(int status);
 	
@@ -19,6 +20,7 @@ public interface IWord extends Comparable<IWord>{
 	
 	/**
 	 * update weight: sum up value, timeStamp, freq
+	 * @param weight
 	 */
 	public void updateWeight( double weight);
 	
@@ -43,7 +45,7 @@ public interface IWord extends Comparable<IWord>{
 	
 	
 	/**
-	 * get word definition
+	 * @return word definition
 	 */
 	public String getDefinition();
 	

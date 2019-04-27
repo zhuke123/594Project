@@ -43,14 +43,9 @@ public class BagOfWords implements IBagOfWords{
 	public void generateBag(Set<IWord> setOfWords,int bagSize,Set<HashSet<IWord>> combination,HashSet<IWord> currentSet) {
  		if(bagSize>currentSet.size()) {
 			for(IWord w:setOfWords) {
-				//System.out.print("size:"+ setOfWords.size()+ "\n");
-				//System.out.print(w.getWord()+ "\n");
 				currentSet.add(w);
 			    Set<IWord> tmp = new HashSet<IWord>(setOfWords);
-			    tmp.remove(w);
-			    for(IWord i: currentSet) {
-			    	//System.out.print(i.getWord()+" ");
-			    }		    
+			    tmp.remove(w);		    
 				generateBag(tmp,bagSize,combination,currentSet);
 				currentSet.remove(w);
 			}
