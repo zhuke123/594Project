@@ -23,6 +23,12 @@ public class Word implements IWord {
 	
 	private int init_timeStamp;
 	
+	/**
+	 * constructor with data, definition and frequency
+	 * @param data
+	 * @param definition
+	 * @param frequency
+	 */
 	public Word(String data, String definition, int frequency){
 		this.data = data;
 		this.timeStamp = 3;
@@ -46,6 +52,10 @@ public class Word implements IWord {
 		this.time = System.currentTimeMillis();
 	}
 	
+	/**
+	 * getter for timeStamp
+	 * @return
+	 */
 	public int getTimeStamp() {
 		return this.timeStamp;
 	}
@@ -92,10 +102,18 @@ public class Word implements IWord {
 		return this.definition;
 	}
 	
+	/**
+	 * setter for definition of the word
+	 * @param definition of the word
+	 */
 	public void setDefinition(String definition) {
 		this.definition = definition;
 	}
 	
+	/**
+	 * add text source of the word
+	 * @param source
+	 */
 	public void addSource(int source) {
 		this.textSources.add(source);
 	}

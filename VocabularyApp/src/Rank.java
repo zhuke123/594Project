@@ -6,10 +6,17 @@ import java.util.List;
 public class Rank implements IRank {
 	List<IUser> usersList;
 	
+	/**
+	 * constructor with non-input, will build an empty userList
+	 */
 	public Rank() {
 		usersList = new ArrayList<IUser>();
 	}
 	
+	/**
+	 * constructor with given userList
+	 * @param usersList
+	 */
 	public Rank(List<IUser> usersList) {
 		this.usersList = usersList;
 	}
@@ -43,6 +50,10 @@ public class Rank implements IRank {
 		Collections.reverse(this.usersList);
 	}
 	
+	/**
+	 * add user to the user list
+	 * @param user input
+	 */
 	public void addUser(IUser user) {
 		if(this.usersList.contains(user))
 			return ;
@@ -50,6 +61,11 @@ public class Rank implements IRank {
 			this.usersList.add(user);
 	}
 	
+	/**
+	 * get rank of specific username
+	 * @param username
+	 * @return rank of the user, return -1 if user not found
+	 */
 	public int getRank(String username) {
 		for(int i = 0; i < this.usersList.size(); i ++) {
 			if(this.usersList.get(i).getUsername().equals(username))
@@ -58,6 +74,11 @@ public class Rank implements IRank {
 		return -1;
 	}
 	
+	/**
+	 * get username of specific rank
+	 * @param rank
+	 * @return username of this rank
+	 */
 	public String getRank(int rank) {
 		if(rank <= 0 || rank >= this.usersList.size())
 			return "no such user";

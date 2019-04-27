@@ -64,13 +64,6 @@ public class BagOfWordsTest {
 		Set<HashSet<IWord>> key = new HashSet<HashSet<IWord>>();
 		HashSet<IWord> currentSet = new HashSet<IWord>();
 		e1.generateBag(setOfWord, 2, key, currentSet);
-		for(HashSet<IWord> i: key) {
-			for(IWord w: i) {
-				System.out.print(w.getWord());
-				System.out.print("  ");
-			}
-			System.out.print("\n");
-		}
 	}
  
 	

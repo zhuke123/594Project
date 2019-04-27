@@ -5,15 +5,26 @@ public class FlashCard implements IFlashCard{
 	
 	PriorityQueue<IWord> pq;
 	
+	/***
+	 * constructor
+	 */
 	
 	public FlashCard() {
 		this.pq = new PriorityQueue<IWord>();
 	}
+	
 	@Override
+	/***
+	 * return the type of the event
+	 */
 	public String type() {	
 		return "flashcard";
 	}
 
+	/***
+	 * create the data structure
+	 * return true if succeed
+	 */
 	@Override
 	public boolean createDataStructure(List<IWord> words) {
 		if(words==null) {
