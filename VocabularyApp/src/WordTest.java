@@ -3,7 +3,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class WordTest {
-
+	
+	/**
+	 * Test for update time stamp
+	 */
 	@Test
 	public void testUpdateTimeStamp() {
 		Word word1 = new Word("a", "lalala", 4);
@@ -11,20 +14,28 @@ public class WordTest {
 		word1.updateTimeStamp();
 		assertEquals(word1.getTimeStamp(), 2);
 	}
-
+	
+	/**
+	 * test for updateFeedback
+	 */
 	@Test
 	public void testUpdateFeedback() {
 		Word word1 = new Word("a", "lalala", 4);
 		word1.updateFeedback(1);
 		assertEquals(word1.getWeight(), 8.0 / 3, 0.000000001);
 	}
-
+	/**
+	 * test for updateWeight
+	 */
 	@Test
 	public void testUpdateWeight() {
 		Word word1 = new Word("a", "lalala", 4);
 		word1.updateWeight(0.22);
 		assertEquals(word1.getWeight(), 0.22, 0.000000001);
 	}
+	/**
+	 * test for compareTo
+	 */
 	@Test
 	public void testCompareTo() {
 		Word word1 = new Word("a", "lalala", 4);
@@ -34,7 +45,9 @@ public class WordTest {
 		assertEquals(word2.compareTo(word3), 0);
 		assertEquals(word2.compareTo(word1), -1);
 	}
-	
+	/**
+	 * test for getTextSources
+	 */
 	@Test
 	public void testGetTextSources() {
 		Word word1 = new Word("a", "lalala", 4);
@@ -45,7 +58,9 @@ public class WordTest {
 		assertTrue(word1.getTextSources().contains(2));
 		
 	}
-	
+	/**
+	 * test for update time, getters and setters
+	 */
 	@Test
 	public void testUpdateTime() {
 		Word word1 = new Word("a", "lalala", 3);
