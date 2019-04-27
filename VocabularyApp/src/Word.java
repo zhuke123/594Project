@@ -110,6 +110,6 @@ public class Word implements IWord {
 				return -1;
 		}
 	}
-	
+	 
 
 }
