@@ -36,25 +36,32 @@ public class BagOfWords implements IBagOfWords{
 		Set<HashSet<IWord>> key = new HashSet<HashSet<IWord>>();
 		HashSet<IWord> currentSet = new HashSet<IWord>();
 		HashMap<HashSet<IWord>, Integer> permutation= new HashMap<HashSet<IWord>,Integer>();
-		generateBag(setOfWord,bagSize,key,currentSet);
-		System.out.print(key.size()+"\n");
-		//get common text - intersection Word's text source
+		Set<IWord> tmpSetOfWord = new HashSet<IWord>(setOfWord);
+		generateBag(tmpSetOfWord,bagSize,key,currentSet);
+		
 		for(HashSet<IWord> s: key) {
 			List<HashSet<Integer>> textlist = new ArrayList<HashSet<Integer>>();
 			for(IWord w:s) {
-				System.out.print(w.getWord()+":"+w.getTextSources().size());
-				if(w.getTextSources()!=null) {
-					textlist.add((HashSet<Integer>) w.getTextSources());
-				}
+				for(IWord i: setOfWord) {
+					System.out.print(i.getTextSources().size());
+					if(w.getWord().equals(i.getWord())) {
+						textlist.add((HashSet<Integer>) i.getTextSources());
+					}
+				}	
 			}
-			System.out.print("\n");
+//			for(IWord i : setOfWord) {
+//				System.out.print(i.getTextSources().size());
+//			}
 			HashSet<Integer> commonText = textlist.get(0);
 			for(int i = 1; i < textlist.size();i++) {
 				commonText.retainAll(textlist.get(i));
 			}
 			permutation.put(s,commonText.size());
-			System.out.print(permutation.size()+"\n");
 		}
+		
+//		for(IWord i : setOfWord) {
+//			System.out.print(i.getTextSources().size());
+//		}
 		ArrayList<Integer> max = new ArrayList<Integer>(permutation.values());		
 		Collections.sort(max,Collections.reverseOrder());
 		//System.out.print(max.get(0));
@@ -70,6 +77,10 @@ public class BagOfWords implements IBagOfWords{
 	}
 	
 	
+//	for(IWord i : setOfWord) {
+//	System.out.print(i.getTextSources().size());
+//}
+
 	private void generateBag(Set<IWord> setOfWords,int bagSize,Set<HashSet<IWord>> combination,HashSet<IWord> currentSet) {
  		if(bagSize>currentSet.size()) {
 			for(IWord w:setOfWords) {

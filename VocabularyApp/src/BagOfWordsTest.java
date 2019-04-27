@@ -67,7 +67,6 @@ public class BagOfWordsTest {
 		w17.getTextSources().add(13);
 		Word w18 = new Word("r","drink",13);
 		w18.getTextSources().add(14);
-		System.out.print(w18.getWord() + w18.getTextSources().size());
 		Word w19 = new Word("s","container",7);
 		w19.getTextSources().add(15);
 		Word w20 = new Word("t","fds",7);
