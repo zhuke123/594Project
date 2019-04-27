@@ -6,7 +6,9 @@ import java.util.List;
 import org.junit.Test;
 
 public  class RankTest {
-
+	/**
+	 * test for show all rank and different constructors
+	 */
 	@Test
 	public void testShowAllRank() {
 		System.out.println("show all rank");
@@ -26,7 +28,10 @@ public  class RankTest {
 		user3.setWordCount(30);
 		rank.showAllRank();
 	}
-
+	
+	/**
+	 * test for search rank
+	 */
 	@Test
 	public  void testSearchRank() {
 		System.out.println("search rank");
@@ -47,7 +52,10 @@ public  class RankTest {
 		rank.searchRank("userNone");
 		
 	}
-
+	
+	/**
+	 * test for update rank
+	 */
 	@Test
 	public  void testUpdateRank() {
 		System.out.println("update rank");

@@ -66,7 +66,7 @@ public class BagOfWords implements IBagOfWords{
 			for(IWord w:setOfWords) {
 				currentSet.add(w);
 			    Set<IWord> tmp = new HashSet<IWord>(setOfWords);
-			    tmp.remove(w);
+			    tmp.remove(w);		    
 				generateBag(tmp,bagSize,combination,currentSet);
 				currentSet.remove(w);
 			}

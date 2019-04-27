@@ -7,6 +7,7 @@
 /IUser.class
 /IWord.class
 /Dictionary.class
+/IRankTest.class
 /IWordTest.class
 /Program.class
 /Rank.class
@@ -25,4 +26,12 @@
 /HelloWord$2.class
 /HelloWord.class
 /ProgramTest.class
+/HelloWord$3.class
+/HelloWord$4.class
+/HelloWord$5.class
+/HelloWord$6.class
+/HelloWord$7.class
+/HelloWord$8.class
 /RankTest.class
+/HelloWord$10.class
+/HelloWord$9.class
