@@ -50,5 +50,21 @@ public class Rank implements IRank {
 			this.usersList.add(user);
 	}
 	
+	public int getRank(String username) {
+		for(int i = 0; i < this.usersList.size(); i ++) {
+			if(this.usersList.get(i).getUsername().equals(username))
+				return i + 1;
+		}
+		return -1;
+	}
+	
+	public String getRank(int rank) {
+		if(rank <= 0 || rank >= this.usersList.size())
+			return "no such user";
+		else {
+			return this.usersList.get(rank - 1).getUsername();
+		}
+	}
+	
 
 }
