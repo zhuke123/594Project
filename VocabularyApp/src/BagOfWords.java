@@ -72,10 +72,6 @@ public class BagOfWords implements IBagOfWords{
 		return res;
 	}
 	
-	
-//	for(IWord i : setOfWord) {
-//	System.out.print(i.getTextSources().size());
-//}
 
 	private void generateBag(Set<IWord> setOfWords,int bagSize,Set<HashSet<IWord>> combination,HashSet<IWord> currentSet) {
  		if(bagSize>currentSet.size()) {
