@@ -1,5 +1,5 @@
 import java.awt.EventQueue;
-
+import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -31,16 +31,17 @@ public class HelloWord {
 	private JLabel test = new JLabel();
 	private static Program pro = new Program("Dictionary.txt");
 	private static IDictionary dic;
-	private static FlashCard flashcard = new FlashCard();
-	private Word word = (Word) flashcard.getFlashCard();
+	private JTextArea textArea;
 	private JLabel wordLabel;
+	private Word word;
+	
 	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		dic = pro.getDict();
-		flashcard.createDataStructure(dic.getWords());
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -70,26 +71,27 @@ public class HelloWord {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
-		JPanel panelMenu = new JPanel();
+		panelMenu = new JPanel();
 		frame.getContentPane().add(panelMenu, "name_49647960823438");
 		panelMenu.setLayout(null);
 		panelMenu.setVisible(false);
 		
-		JPanel panelBOW = new JPanel();
+		panelBOW = new JPanel();
 		frame.getContentPane().add(panelBOW, "name_50915847383607");
 		panelBOW.setLayout(null);
 		panelBOW.setVisible(false);
 		
-		JPanel panelLogin = new JPanel();
+	    panelLogin = new JPanel();
 		frame.getContentPane().add(panelLogin, "name_51769814100289");
 		panelLogin.setVisible(true);
 		panelLogin.setLayout(null);
 		
 		
-		JPanel panelFC = new JPanel();
+		panelFC = new JPanel();
 		frame.getContentPane().add(panelFC, "name_49529805569344");
 		panelFC.setVisible(false);
 		
+		//home page
 		JButton btnHome = new JButton("Home");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -109,6 +111,7 @@ public class HelloWord {
 		panelLogin.add(txtUsername);
 		txtUsername.setText("username");
 		txtUsername.setColumns(10);
+		//get username from user
 		txtUsername.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				username = txtUsername.getText();
@@ -128,7 +131,6 @@ public class HelloWord {
 				panelMenu.setVisible(true);
 				panelBOW.setVisible(false);
 				pro.addUsers(username);
-				
 			}
 		});
 		btnNewButton.setBounds(238, 98, 76, 29);
@@ -147,6 +149,9 @@ public class HelloWord {
 		lblNewLabel.setBounds(62, 36, 360, 103);
 		panelMenu.add(lblNewLabel);
 		
+		wordLabel = new JLabel();
+		wordLabel.setBounds(194, 62, 154, 16);
+		panelFC.add(wordLabel);
 		
 
 		
@@ -157,12 +162,18 @@ public class HelloWord {
 				panelMenu.setVisible(false);
 				panelBOW.setVisible(false);
 				panelLogin.setVisible(false);
+				dic.handleRequest(pro.getUser(username).getFlashCard());
+				//pop the first word of user's list
+				word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
+				wordLabel.setText(word.getWord());			
+				textArea.setText(word.getDefinition());
+				
 			}
 		});
 		btnFlashcard.setBounds(65, 171, 117, 29);
 		panelMenu.add(btnFlashcard);
 	
-		
+		//bag of words
 		JButton btnBagOfWords = new JButton("Bag of Words");
 		btnBagOfWords.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -170,6 +181,7 @@ public class HelloWord {
 				panelMenu.setVisible(false);
 				panelBOW.setVisible(true);
 				panelLogin.setVisible(false);
+				dic.handleRequest(pro.getUser(username).getBagOfWords());
 			}
 		});
 		btnBagOfWords.setBounds(221, 171, 117, 29);
@@ -204,32 +216,49 @@ public class HelloWord {
 		panelFC.add(button);
 
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBounds(137, 110, 287, 68);
 		panelFC.add(textArea);
-		textArea.setText(word.getDefinition());
 		
-		JLabel wordLabel = new JLabel(word.getWord());
-		wordLabel.setBounds(194, 62, 154, 16);
-		panelFC.add(wordLabel);
 		
+		
+	
+		// if known, pop the word, and pop next one
 		JButton btnKnown = new JButton("known");
 		btnKnown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				word.updateFeedback(1);
-				word = (Word) flashcard.getFlashCard();
+				//last word
+				System.out.println(word.getWeight() + "known: " + word.getWord());
+				
+				//current word
+				word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
 				wordLabel.setText(word.getWord());
-				textArea.setText(word.getDefinition());
+				textArea.setText(word.getDefinition());			
 			}
 		});
 		btnKnown.setBounds(102, 187, 86, 29);
 		panelFC.add(btnKnown);
 		
+		// if unknown, update the value and insert
 		JButton btnUnknown = new JButton("unknown");
 		btnUnknown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				word.updateFeedback(0);
-				word = (Word) flashcard.getFlashCard();
+				//last word
+				word.updateFeedback(0);		
+				word.updateTime();
+				pro.getUser(username).getFlashCard().insert(word);
+				System.out.println(word.getWeight() + "unknown: " + word.getWord());
+				
+				//current word
+				List<IWord> pops = new LinkedList<>(); 
+				while(true) {
+					word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
+					if(word.getTime() == -1 || System.currentTimeMillis() - word.getTime() >= 5000)
+						break;
+					pops.add(word);
+				}
+				//push back
+				for(IWord word : pops) pro.getUser(username).getFlashCard().insert(word);
 				wordLabel.setText(word.getWord());
 				textArea.setText(word.getDefinition());
 			}

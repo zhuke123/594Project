@@ -5,9 +5,15 @@ public class User implements IUser{
 	IFlashCard flashCard;
 	IBagOfWords bagOfWords;
 	
+	/**
+	 * constructor with username
+	 * @param usernmae
+	 */
 	public User(String name) {
 		this.userName = name;
 		this.knownWords = 0;
+		flashCard = new FlashCard();
+		bagOfWords = new BagOfWords();
 	}
 	
 	@Override
@@ -27,9 +33,13 @@ public class User implements IUser{
 
 	@Override
 	public IFlashCard getFlashCard() {
-		return this.getFlashCard();
+		return flashCard;
 	}
 	
+	/**
+	 * setter for falshCard
+	 * @param flashCard input
+	 */
 	public void setFlashCard(IFlashCard flashCard) {
 		this.flashCard = flashCard;
 	}
@@ -39,6 +49,10 @@ public class User implements IUser{
 		return this.bagOfWords;
 	}
 	
+	/**
+	 * setter for bafOfWords
+	 * @param bagOfWords input
+	 */
 	public void setBagOfWords(IBagOfWords bagOfWords) {
 		this.bagOfWords = bagOfWords;
 	}

@@ -3,7 +3,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class UserTest {
-
+	/**
+	 * test for compareTo
+	 */
 	@Test
 	public void testCompareTo() {
 		User user1 = new User("a");
