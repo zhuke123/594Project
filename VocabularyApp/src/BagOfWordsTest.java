@@ -123,8 +123,8 @@ public class BagOfWordsTest {
 		l1.add(w29);
 		l1.add(w30);
 		assertTrue(e1.createDataStructure(l1));
-		Set<Word> bagOfWord = e1.getBag(2);
-		System.out.print(bagOfWord.size());
+		Set<IWord> bagOfWord = e1.getBag(2);
+		//System.out.print(bagOfWord.size());
 	}
 	
 //	@Test
