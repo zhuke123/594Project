@@ -14,7 +14,7 @@ public class DictionaryTest {
 	public void testGetWords() {
 		Dictionary dict = new Dictionary("Dictionary.txt");
 		List<IWord> words = dict.getWords();
-		assertEquals(words.size(), 5375);
+		assertEquals(words.size(), 2252);
 	}
 
 	/**
@@ -23,7 +23,8 @@ public class DictionaryTest {
 	@Test
 	public void testReadFile() {
 		Dictionary dict = new Dictionary("Dictionary.txt");
-		assertFalse(dict.readFile("sda"));		
+		assertFalse(dict.readFile("sda"));
+		
 	}
 
 	/**
