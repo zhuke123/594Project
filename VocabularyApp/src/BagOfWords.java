@@ -40,10 +40,12 @@ public class BagOfWords implements IBagOfWords{
 		generateBag(tmpSetOfWord,bagSize,key,currentSet);
 		
 		for(HashSet<IWord> s: key) {
+			
 			List<HashSet<Integer>> textlist = new ArrayList<HashSet<Integer>>();
 			for(IWord w:s) {
+				System.out.print(w.getTextSources().size()+" ");
 				for(IWord i: setOfWord) {
-					System.out.print(i.getTextSources().size());
+					//System.out.print(i.getTextSources().size());
 					if(w.getWord().equals(i.getWord())) {
 						textlist.add((HashSet<Integer>) i.getTextSources());
 					}
@@ -78,8 +80,8 @@ public class BagOfWords implements IBagOfWords{
 	
 	
 //	for(IWord i : setOfWord) {
-//	System.out.print(i.getTextSources().size());
-//}
+//		System.out.print(i.getTextSources().size());
+//	}
 
 	private void generateBag(Set<IWord> setOfWords,int bagSize,Set<HashSet<IWord>> combination,HashSet<IWord> currentSet) {
  		if(bagSize>currentSet.size()) {
