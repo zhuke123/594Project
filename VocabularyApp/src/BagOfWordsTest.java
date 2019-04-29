@@ -10,7 +10,7 @@ import org.junit.Test;
 public class BagOfWordsTest {
 
 	/**
-	 * Test 
+	 * Test if the type function of BagOfWord returns the String "bag"
 	 */
 	@Test
 	public void testType(){
@@ -21,8 +21,11 @@ public class BagOfWordsTest {
 		assertFalse(e2.type().equals("bag"));
 	}
 	
+	/**
+	 * 
+	 */
 	@Test
-	public void testGetBag(){
+	public void testCreateDSandGetBag(){
 		BagOfWords e1 = new BagOfWords();
 		Word w1 = new Word("a","fruit",5);
 		w1.getTextSources().add(1);
@@ -67,7 +70,6 @@ public class BagOfWordsTest {
 		w17.getTextSources().add(13);
 		Word w18 = new Word("r","drink",13);
 		w18.getTextSources().add(14);
-		System.out.print(w18.getWord() + w18.getTextSources().size());
 		Word w19 = new Word("s","container",7);
 		w19.getTextSources().add(15);
 		Word w20 = new Word("t","fds",7);
@@ -124,81 +126,11 @@ public class BagOfWordsTest {
 		l1.add(w29);
 		l1.add(w30);
 		assertTrue(e1.createDataStructure(l1));
-		Set<Word> bagOfWord = e1.getBag(2);
-		System.out.print(bagOfWord.size());
+		Set<IWord> bagOfWord = e1.getBag(2);
+		//System.out.print(bagOfWord.size());
 	}
 	
-//	@Test
-//	public void testhelper() {
-//		Set<IWord> setOfWord = new HashSet<IWord>();
-//		Word w1 = new Word("a","fruit",5);
-//		Word w2 = new Word("b","drink",10);
-//		Word w3 = new Word("c","drink",13);
-//		Word w4 = new Word("d","container",7);
-//		Word w5 = new Word("e","fds",7);
-//		Word w6 = new Word("f","fruit",5);
-//		Word w7 = new Word("g","drink",10);
-//		Word w8 = new Word("h","drink",13);
-//		Word w9 = new Word("i","container",7);
-//		Word w10 = new Word("j","fds",7);
-//		Word w11 = new Word("k","fruit",5);
-//		Word w12 = new Word("l","drink",10);
-//		Word w13 = new Word("m","drink",13);
-//		Word w14 = new Word("n","container",7);
-//		Word w15 = new Word("o","fds",7);
-//		Word w16 = new Word("p","fruit",5);
-//		Word w17 = new Word("q","drink",10);
-//		Word w18 = new Word("r","drink",13);
-//		Word w19 = new Word("s","container",7);
-//		Word w20 = new Word("t","fds",7);
-//		Word w21 = new Word("u","fds",7);
-//		Word w22 = new Word("v","fruit",5);
-//		Word w23 = new Word("w","drink",13);
-//		Word w24 = new Word("x","container",7);
-//		Word w25 = new Word("y","fds",7);
-//		Word w26 = new Word("z","fruit",5);
-//		Word w27 = new Word("aa","drink",10);
-//		Word w28 = new Word("bb","drink",13);
-//		Word w29 = new Word("cc","container",7);
-//		Word w30 = new Word("dd","fds",7);
-//		setOfWord.add(w4);
-//		setOfWord.add(w3);
-//		setOfWord.add(w2);
-//		setOfWord.add(w1);
-//		setOfWord.add(w5);
-//		setOfWord.add(w6);
-//		setOfWord.add(w7);
-//		setOfWord.add(w8);
-//		setOfWord.add(w9);
-//		setOfWord.add(w10);
-//		setOfWord.add(w11);
-//		setOfWord.add(w13);
-//		setOfWord.add(w12);
-//		setOfWord.add(w14);
-//		setOfWord.add(w15);
-//		setOfWord.add(w16);
-//		setOfWord.add(w17);
-//		setOfWord.add(w18);
-//		setOfWord.add(w19);
-//		setOfWord.add(w20);
-//		setOfWord.add(w24);
-//		setOfWord.add(w23);
-//		setOfWord.add(w22);
-//		setOfWord.add(w21);
-//		setOfWord.add(w25);
-//		setOfWord.add(w26);
-//		setOfWord.add(w27);
-//		setOfWord.add(w28);
-//		setOfWord.add(w29);
-//		setOfWord.add(w30);
-//		BagOfWords e1 = new BagOfWords();
-//		
-//		Set<HashSet<IWord>> key = new HashSet<HashSet<IWord>>();
-//		HashSet<IWord> currentSet = new HashSet<IWord>();
-//		e1.generateBag(setOfWord, 4, key, currentSet);
-//
-//	}
- 
+
 	
 
 }
