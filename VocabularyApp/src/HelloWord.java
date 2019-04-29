@@ -276,6 +276,11 @@ public class HelloWord {
 		lblMessage.setForeground(UIManager.getColor("Button.light"));
 		lblMessage.setBackground(UIManager.getColor("Button.light"));
 		
+		JLabel lblRanking = new JLabel("ranking");
+		lblRanking.setBounds(18, 62, 107, 16);
+		panelFC.add(lblRanking);
+		lblRanking.setText("ranking: " + ((Rank)pro.getRank()).getRank(username));
+		
 		
 		
 
