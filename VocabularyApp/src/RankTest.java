@@ -74,5 +74,27 @@ public  class RankTest {
 		rank.updateRank(user1);
 		rank.showAllRank();
 	}
+	@Test
+	public  void testGetRank() {
+		System.out.println("update rank");
+		Rank rank = new Rank();
+		IUser user1 = new User("user1");
+		IUser user2 = new User("user2");
+		IUser user3 = new User("user3");
+		rank.addUser(user1);
+		rank.addUser(user2);
+		rank.addUser(user3);
+		user1.setWordCount(10);
+		user2.setWordCount(20);
+		user3.setWordCount(30);
+		assertEquals(rank.getRank(1),"user3");
+		assertEquals(rank.getRank(2),"user2");
+		assertEquals(rank.getRank(3),"user1");
+		user1.setWordCount(40);
+		assertEquals(rank.getRank(1),"user1");
+		assertEquals(rank.getRank("user1"),1);
+		assertEquals(rank.getRank("user3"),2);
+	}
+	
 
 }

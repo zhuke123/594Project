@@ -59,7 +59,7 @@ public class User implements IUser{
 
 	@Override
 	public int compareTo(IUser o) {
-		return this.getWordCount() - o.getWordCount();
+		return o.getWordCount() - this.getWordCount();
 	}
 
 
