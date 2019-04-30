@@ -39,6 +39,7 @@ public class HelloWord {
 	private int bagSize;
 	private String str;
 	private JLabel lblRanking;
+	private JTextArea textArea_1;
 	
 	/**
 	 * Launch the application.
@@ -175,7 +176,7 @@ public class HelloWord {
 				panelBOW.setVisible(true);
 				panelLogin.setVisible(false);
 				dic.handleRequest(pro.getUser(username).getBagOfWords());
-				wordSet =  pro.getUser(username).getBagOfWords().getBag(bagSize);	
+					
 			}
 		});
 		btnBagOfWords.setBounds(221, 171, 117, 29);
@@ -194,21 +195,21 @@ public class HelloWord {
 		btnGo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bagSize = Integer.parseInt(txtSize.getText());
-				System.out.println(bagSize);
+				wordSet =  pro.getUser(username).getBagOfWords().getBag(bagSize);
 				str = "";
 				for(IWord word: wordSet) {
-					str += word.getWord();
+					str += word.getWord()+'\n';
 				}
-				System.out.println(str);
+				textArea_1.setText(str);
 			}
 		});
 		btnGo.setBounds(280, 63, 64, 29);
 		panelBOW.add(btnGo);
 		
-		JTextArea textArea_1 = new JTextArea();
+		textArea_1 = new JTextArea();
 		textArea_1.setBounds(125, 103, 223, 76);
 		panelBOW.add(textArea_1);
-		textArea_1.setText(str);
+		
 		
 		//home page
 				JButton btnHome = new JButton("Home");
