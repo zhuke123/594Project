@@ -22,32 +22,8 @@ public class Rank implements IRank {
 	}
 	
 	@Override
-	public void showAllRank() {
-		Collections.reverse(this.usersList);
-		for(int i = 0 ; i < this.usersList.size();i++) {
-			IUser temp = this.usersList.get(i);
-			System.out.println(temp.getUsername() + " Rank : " + (i + 1)
-			+ " Known words : " + temp.getWordCount());	
-		}
-
-	}
-
-	@Override
-	public boolean searchRank(String userName) {
-		Collections.reverse(this.usersList);
-		for(int i = 0; i < this.usersList.size(); i ++) {
-			if(this.usersList.get(i).getUsername().equals(userName)) {
-				System.out.println(userName + " Rank : " + (i + 1));
-				return true;
-			}
-		}
-		System.out.println("user is not in database, cant get rank");
-		return false;
-	}
-
-	@Override
 	public void updateRank(IUser user) {
-		Collections.reverse(this.usersList);
+		Collections.sort(this.usersList);
 	}
 	
 	/**
@@ -67,7 +43,10 @@ public class Rank implements IRank {
 	 * @return rank of the user, return -1 if user not found
 	 */
 	public int getRank(String username) {
+		Collections.sort(this.usersList);
+		
 		for(int i = 0; i < this.usersList.size(); i ++) {
+			System.out.println(this.usersList.get(i).getUsername() + " is in rank : " + (i+1));
 			if(this.usersList.get(i).getUsername().equals(username))
 				return i + 1;
 		}
@@ -80,7 +59,8 @@ public class Rank implements IRank {
 	 * @return username of this rank
 	 */
 	public String getRank(int rank) {
-		if(rank <= 0 || rank >= this.usersList.size())
+		Collections.sort(this.usersList);
+		if(rank <= 0 || rank > this.usersList.size())
 			return "no such user";
 		else {
 			return this.usersList.get(rank - 1).getUsername();
