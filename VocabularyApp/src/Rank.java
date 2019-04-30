@@ -82,7 +82,7 @@ public class Rank implements IRank {
 	 */
 	public String getRank(int rank) {
 		Collections.sort(this.usersList);
-		if(rank <= 0 || rank >= this.usersList.size())
+		if(rank <= 0 || rank > this.usersList.size())
 			return "no such user";
 		else {
 			return this.usersList.get(rank - 1).getUsername();
