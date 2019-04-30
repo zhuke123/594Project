@@ -20,6 +20,8 @@ public class Word implements IWord {
 	private Set<Integer> textSources;
 	//time last updated
 	long time;
+	//check if we meet the word for the first time
+	boolean first;
 	
 	private int init_timeStamp;
 	
@@ -59,8 +61,11 @@ public class Word implements IWord {
 	public int getTimeStamp() {
 		return this.timeStamp;
 	}
+	
 	@Override
 	public void updateFeedback(int status) {
+		if(first)
+			first = false;
 		//0 means the user doesn't know the word
 		if(status == 0) {
 			this.weight += this.frequency * 1.0 / this.init_timeStamp;
@@ -127,6 +132,10 @@ public class Word implements IWord {
 			else
 				return -1;
 		}
+	}
+	@Override
+	public boolean ifFirst() {
+		return this.first;
 	}
 	 
 

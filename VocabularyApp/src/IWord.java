@@ -66,6 +66,11 @@ public interface IWord extends Comparable<IWord>{
 	 */
 	public void updateTime();
 	
+	/**
+	 * check if we meet the word for the first time
+	 */
+	public boolean ifFirst();
+	
 	
 
 }
