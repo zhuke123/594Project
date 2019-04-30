@@ -37,6 +37,7 @@ public class Dictionary implements IDictionary {
 				}
 				wordList.add(cur);
 			}
+			b.close();
 			return true;
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");

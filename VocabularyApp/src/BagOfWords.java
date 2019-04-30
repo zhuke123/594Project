@@ -16,6 +16,8 @@ public class BagOfWords implements IBagOfWords{
 		if(words == null || words.size() < 30)
 			return false;
 		setOfWord = new HashSet<>();
+		
+		//create set of 30
 		while(setOfWord.size() < 30) {
 			IWord maxi = null;
 			int freq = -1;
@@ -28,44 +30,55 @@ public class BagOfWords implements IBagOfWords{
 			setOfWord.add(maxi);
 		}
 		return true;
-	}
-
+	}	
 	@Override
-	public Set<Word> getBag(int bagSize) {
-		Set<String> bag = new HashSet<String>();
-		Set<HashSet<IWord>> key = new HashSet<HashSet<IWord>>();
-		HashSet<IWord> currentSet = new HashSet<IWord>();
-		HashMap<HashSet<IWord>, Integer> permutation= new HashMap<HashSet<IWord>,Integer>();
-		generateBag(setOfWord,bagSize,key,currentSet);
-		for(HashSet<IWord> s: key) {
-			List<HashSet<Integer>> textlist = new ArrayList<HashSet<Integer>>();
-			for(IWord w:s) {
-				textlist.add((HashSet<Integer>) w.getTextSources());
-			}
-			HashSet<Integer> commonText = textlist.get(0);
-			for(int i = 1; i < textlist.size();i++) {
-				commonText.retainAll(textlist.get(i));
-			}
-			permutation.put(s,commonText.size());
-		}
+	public Set<IWord> getBag(int bagSize) {
 		
-		ArrayList max = new ArrayList<Integer>(permutation.values());
-		Collections.sort(max,Collections.reverseOrder());
-		for(HashSet<IWord> k: permutation.keySet()) {
-			if(permutation.get(k)==max.get(0)) {
-				for(IWord w: k) {
-					bagOfWord.add((Word) w);
+		//generate all combination
+		Set<HashSet<IWord>> combinations = new HashSet<HashSet<IWord>>();
+		HashSet<IWord> currentSet = new HashSet<IWord>();
+		Set<IWord> tmpSetOfWord = new HashSet<IWord>(setOfWord);
+		generateBag(tmpSetOfWord,bagSize,combinations,currentSet);
+				
+		//record for largest　set
+		Set<IWord> res = new HashSet<>();
+		int max = 0;
+		
+		//loop through all combinations
+		for(HashSet<IWord> set : combinations) {
+			HashSet<Integer> texts = new HashSet<>();
+			boolean first = true;
+			//loop through all words to get intersection texts
+			for(IWord word : set) {
+				if(first) {
+					texts = new HashSet<>(word.getTextSources());					
+					first = false;
+				}
+				else {
+					texts.retainAll(word.getTextSources());
 				}
 			}
+			//update maximum set
+			if(texts.size() > max) {
+				max = texts.size();
+				res = set;
+			}
+		}	
+		
+		for(IWord word : res) {
+			System.out.println(word.getWord() + " " + word.getTextSources().size());
 		}
-		return bagOfWord;
+		
+		return res;
 	}
 	
-	public void generateBag(Set<IWord> setOfWords,int bagSize,Set<HashSet<IWord>> combination,HashSet<IWord> currentSet) {
+
+	private void generateBag(Set<IWord> setOfWords,int bagSize,Set<HashSet<IWord>> combination,HashSet<IWord> currentSet) {
  		if(bagSize>currentSet.size()) {
 			for(IWord w:setOfWords) {
 				currentSet.add(w);
 			    Set<IWord> tmp = new HashSet<IWord>(setOfWords);
+				
 			    tmp.remove(w);		    
 				generateBag(tmp,bagSize,combination,currentSet);
 				currentSet.remove(w);
