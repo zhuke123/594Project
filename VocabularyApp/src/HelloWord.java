@@ -182,6 +182,8 @@ public class HelloWord {
 				panelBOW.setVisible(true);
 				panelLogin.setVisible(false);
 				dic.handleRequest(pro.getUser(username).getBagOfWords());
+				Set<IWord> wordSet =  pro.getUser(username).getBagOfWords().getBag(3);
+				
 			}
 		});
 		btnBagOfWords.setBounds(221, 171, 117, 29);
@@ -279,7 +281,7 @@ public class HelloWord {
 		JLabel lblRanking = new JLabel("ranking");
 		lblRanking.setBounds(18, 62, 107, 16);
 		panelFC.add(lblRanking);
-		lblRanking.setText("ranking: " + ((Rank)pro.getRank()).getRank(username));
+		lblRanking.setText("ranking: " + (pro.getRank()).getRank(username));
 		
 		
 		
