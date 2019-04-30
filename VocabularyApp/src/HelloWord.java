@@ -28,7 +28,6 @@ public class HelloWord {
 	private JTextField txtUsername;
 	private String username;
 	private JLabel greetingLabel = new JLabel();
-	private JLabel test = new JLabel();
 	private static Program pro = new Program("Dictionary.txt");
 	private static IDictionary dic;
 	private JTextArea textArea;
@@ -267,12 +266,15 @@ public class HelloWord {
 		JButton btnKnown = new JButton("known");
 		btnKnown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+			if(!word.first) {
+				word.updateFeedback(1);
+				word.updateTime();
+				pro.getUser(username).getFlashCard().insert(word);
+			}
 				//current word
 				word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
 				wordLabel.setText(word.getWord());
-				textArea.setText(word.getDefinition());	
-			
+				textArea.setText(word.getDefinition());				
 				pro.getUser(username).setWordCount(pro.getUser(username).getWordCount()+1);
 				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + " word count: " + pro.getUser(username).getWordCount() );
 			}
