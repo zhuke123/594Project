@@ -71,7 +71,7 @@ public class HelloWord {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -98,7 +98,8 @@ public class HelloWord {
 		
 	
 		txtUsername = new JTextField();
-		txtUsername.setBounds(96, 98, 130, 26);
+		txtUsername.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		txtUsername.setBounds(400, 192, 130, 26);
 		panelLogin.add(txtUsername);
 		txtUsername.setText("username");
 		txtUsername.setColumns(10);
@@ -109,46 +110,51 @@ public class HelloWord {
 				greetingLabel.setText(username);	
 			}
 		});	
-		greetingLabel.setBounds(62, 53, 171, 18);
+		greetingLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		greetingLabel.setBounds(62, 53, 241, 60);
 		panelMenu.add(greetingLabel);
 		
 		JButton btnNewButton = new JButton("Enter");
+		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				username = txtUsername.getText();
-				greetingLabel.setText("Hello " +username);	
+				String cap = username.substring(0, 1).toUpperCase() + username.substring(1);
+				greetingLabel.setText("Hello, " + cap +"!");	
 				panelLogin.setVisible(false);
 				panelFC.setVisible(false);
 				panelMenu.setVisible(true);
 				panelBOW.setVisible(false);
 				pro.addUsers(username);
-				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username));
+				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + "\n word count: " + pro.getUser(username).getWordCount());
 
 			}
 		});
-		btnNewButton.setBounds(238, 98, 76, 29);
+		btnNewButton.setBounds(538, 192, 76, 29);
 		panelLogin.add(btnNewButton);
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("Type in your username");
-		lblNewLabel_1.setBounds(68, 26, 312, 60);
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblNewLabel_1.setBounds(335, 70, 481, 60);
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 42));
 		panelLogin.add(lblNewLabel_1);
 		
 	
 		
 		JLabel lblNewLabel = new JLabel("What do you want to play?");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 21));
-		lblNewLabel.setBounds(62, 36, 360, 103);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		lblNewLabel.setBounds(231, 87, 550, 199);
 		panelMenu.add(lblNewLabel);
 		
 		wordLabel = new JLabel();
-		wordLabel.setBounds(194, 62, 154, 16);
+		wordLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		wordLabel.setBounds(346, 62, 264, 59);
 		panelFC.add(wordLabel);
 		
 
 		
 		JButton btnFlashcard = new JButton("FlashCard");  
+		btnFlashcard.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnFlashcard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelFC.setVisible(true);
@@ -163,11 +169,12 @@ public class HelloWord {
 				
 			}
 		});
-		btnFlashcard.setBounds(65, 171, 117, 29);
+		btnFlashcard.setBounds(294, 338, 160, 53);
 		panelMenu.add(btnFlashcard);
 	
 		//bag of words
 		JButton btnBagOfWords = new JButton("Bag of Words");
+		btnBagOfWords.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnBagOfWords.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelFC.setVisible(false);
@@ -178,7 +185,7 @@ public class HelloWord {
 					
 			}
 		});
-		btnBagOfWords.setBounds(221, 171, 117, 29);
+		btnBagOfWords.setBounds(583, 338, 160, 53);
 		panelMenu.add(btnBagOfWords);
 		
 		txtSize = new JTextField();
@@ -227,6 +234,7 @@ public class HelloWord {
 			
 				
 		JButton btnNewButton_1 = new JButton("Log out");
+		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelLogin.setVisible(true);
@@ -235,13 +243,14 @@ public class HelloWord {
 				panelBOW.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(142, 212, 117, 29);
+		btnNewButton_1.setBounds(447, 403, 137, 53);
 		panelMenu.add(btnNewButton_1);
 		
 
 		
 		JButton button = new JButton("Home");
-		button.setBounds(174, 216, 81, 29);
+		button.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		button.setBounds(538, 435, 86, 29);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelFC.setVisible(false);
@@ -256,7 +265,8 @@ public class HelloWord {
 
 		
 		textArea = new JTextArea();
-		textArea.setBounds(137, 110, 287, 68);
+		textArea.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+		textArea.setBounds(320, 148, 545, 213);
 		panelFC.add(textArea);
 		
 		
@@ -264,9 +274,13 @@ public class HelloWord {
 	
 		// if known, pop the word, and pop next one
 		JButton btnKnown = new JButton("known");
+		btnKnown.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		btnKnown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(!word.first) {
+			if(word.isFirst()) {
+				pro.getUser(username).setWordCount(pro.getUser(username).getWordCount()+1);
+			}
+			else {
 				word.updateFeedback(1);
 				word.updateTime();
 				pro.getUser(username).getFlashCard().insert(word);
@@ -274,16 +288,16 @@ public class HelloWord {
 				//current word
 				word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
 				wordLabel.setText(word.getWord());
-				textArea.setText(word.getDefinition());				
-				pro.getUser(username).setWordCount(pro.getUser(username).getWordCount()+1);
-				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + " word count: " + pro.getUser(username).getWordCount() );
+				textArea.setText(word.getDefinition());							
+				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + "\n word count: " + pro.getUser(username).getWordCount() );
 			}
 		});
-		btnKnown.setBounds(102, 187, 86, 29);
+		btnKnown.setBounds(402, 382, 86, 29);
 		panelFC.add(btnKnown);
 		
 		// if unknown, update the value and insert
 		JButton btnUnknown = new JButton("unknown");
+		btnUnknown.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		btnUnknown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//last word
@@ -303,26 +317,29 @@ public class HelloWord {
 				for(IWord word : pops) pro.getUser(username).getFlashCard().insert(word);
 				wordLabel.setText(word.getWord());
 				textArea.setText(word.getDefinition());
-				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + " word count: " + pro.getUser(username).getWordCount() );
+				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + "\n word count: " + pro.getUser(username).getWordCount() );
 			}
 		});
-		btnUnknown.setBounds(233, 187, 102, 29);
+		btnUnknown.setBounds(649, 393, 152, 29);
 		panelFC.add(btnUnknown);
 		
 		JLabel lblTheDefinitionIs = new JLabel("The definition is:");
-		lblTheDefinitionIs.setBounds(18, 110, 107, 16);
+		lblTheDefinitionIs.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblTheDefinitionIs.setBounds(149, 148, 194, 65);
 		panelFC.add(lblTheDefinitionIs);
 		
 		lblMessage = new JLabel("Flashcard");
-		lblMessage.setBounds(188, 6, 81, 44);
+		lblMessage.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		lblMessage.setBounds(408, 6, 221, 44);
 		panelFC.add(lblMessage);
 		lblMessage.setForeground(UIManager.getColor("Button.light"));
 		lblMessage.setBackground(UIManager.getColor("Button.light"));
 		
 		lblRanking = new JLabel("ranking");
-		lblRanking.setBounds(18, 62, 168, 36);
+		lblRanking.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblRanking.setBounds(20, 6, 314, 119);
 		panelFC.add(lblRanking);
-		lblRanking.setText("ranking: " + (pro.getRank()).getRank(username));		
+		lblRanking.setText("ranking: 0");		
 
 
 

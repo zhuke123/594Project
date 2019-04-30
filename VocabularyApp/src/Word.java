@@ -40,6 +40,7 @@ public class Word implements IWord {
 		this.definition = definition;
 		textSources = new HashSet<Integer>();
 		this.time = -1;
+		this.first = true;
 	}
 	@Override
 	public void updateTimeStamp() {
@@ -134,9 +135,9 @@ public class Word implements IWord {
 		}
 	}
 	@Override
-	public boolean ifFirst() {
+	public boolean isFirst() {
 		return this.first;
 	}
-	 
+
 
 }
