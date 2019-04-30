@@ -69,7 +69,9 @@ public interface IWord extends Comparable<IWord>{
 	/**
 	 * check if we meet the word for the first time
 	 */
-	public boolean ifFirst();
+	public boolean isFirst();
+	
+
 	
 	
 
