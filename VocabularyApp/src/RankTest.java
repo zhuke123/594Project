@@ -88,7 +88,12 @@ public  class RankTest {
 		user2.setWordCount(20);
 		user3.setWordCount(30);
 		assertEquals(rank.getRank(1),"user3");
-		
+		assertEquals(rank.getRank(2),"user2");
+		assertEquals(rank.getRank(3),"user1");
+		user1.setWordCount(40);
+		assertEquals(rank.getRank(1),"user1");
+		assertEquals(rank.getRank("user1"),1);
+		assertEquals(rank.getRank("user3"),2);
 	}
 	
 
