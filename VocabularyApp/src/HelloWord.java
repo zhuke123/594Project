@@ -265,7 +265,8 @@ public class HelloWord {
 
 		
 		textArea = new JTextArea();
-		textArea.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+		textArea.setLineWrap(true);
+		textArea.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		textArea.setBounds(320, 148, 545, 213);
 		panelFC.add(textArea);
 		
@@ -292,7 +293,7 @@ public class HelloWord {
 				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + "\n word count: " + pro.getUser(username).getWordCount() );
 			}
 		});
-		btnKnown.setBounds(402, 382, 86, 29);
+		btnKnown.setBounds(408, 382, 86, 29);
 		panelFC.add(btnKnown);
 		
 		// if unknown, update the value and insert
@@ -320,7 +321,7 @@ public class HelloWord {
 				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + "\n word count: " + pro.getUser(username).getWordCount() );
 			}
 		});
-		btnUnknown.setBounds(649, 393, 152, 29);
+		btnUnknown.setBounds(651, 382, 152, 29);
 		panelFC.add(btnUnknown);
 		
 		JLabel lblTheDefinitionIs = new JLabel("The definition is:");
