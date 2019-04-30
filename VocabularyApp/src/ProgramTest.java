@@ -22,6 +22,10 @@ public class ProgramTest {
 	@Test
 	public void testGetRank() {
 		assertTrue(m.getRank() != null);
+		m.addUsers("nn");
+		m.addUsers("qq");
+		assertEquals(1, m.getRank().getRank("nn"));
+		assertEquals(2, m.getRank().getRank("qq"));
 	}
 
 	/**
