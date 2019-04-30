@@ -46,7 +46,6 @@ public class Rank implements IRank {
 		Collections.sort(this.usersList);
 		
 		for(int i = 0; i < this.usersList.size(); i ++) {
-			System.out.println(this.usersList.get(i).getUsername() + " is in rank : " + (i+1));
 			if(this.usersList.get(i).getUsername().equals(username))
 				return i + 1;
 		}

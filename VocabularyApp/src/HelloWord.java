@@ -28,7 +28,6 @@ public class HelloWord {
 	private JTextField txtUsername;
 	private String username;
 	private JLabel greetingLabel = new JLabel();
-	private JLabel test = new JLabel();
 	private static Program pro = new Program("Dictionary.txt");
 	private static IDictionary dic;
 	private JTextArea textArea;
@@ -39,6 +38,7 @@ public class HelloWord {
 	private int bagSize;
 	private String str;
 	private JLabel lblRanking;
+	private JTextArea textArea_1;
 	
 	/**
 	 * Launch the application.
@@ -175,7 +175,7 @@ public class HelloWord {
 				panelBOW.setVisible(true);
 				panelLogin.setVisible(false);
 				dic.handleRequest(pro.getUser(username).getBagOfWords());
-				wordSet =  pro.getUser(username).getBagOfWords().getBag(bagSize);	
+					
 			}
 		});
 		btnBagOfWords.setBounds(221, 171, 117, 29);
@@ -194,21 +194,21 @@ public class HelloWord {
 		btnGo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bagSize = Integer.parseInt(txtSize.getText());
-				System.out.println(bagSize);
+				wordSet =  pro.getUser(username).getBagOfWords().getBag(bagSize);
 				str = "";
 				for(IWord word: wordSet) {
-					str += word.getWord();
+					str += word.getWord()+'\n';
 				}
-				System.out.println(str);
+				textArea_1.setText(str);
 			}
 		});
 		btnGo.setBounds(280, 63, 64, 29);
 		panelBOW.add(btnGo);
 		
-		JTextArea textArea_1 = new JTextArea();
+		textArea_1 = new JTextArea();
 		textArea_1.setBounds(125, 103, 223, 76);
 		panelBOW.add(textArea_1);
-		textArea_1.setText(str);
+		
 		
 		//home page
 				JButton btnHome = new JButton("Home");
@@ -266,12 +266,15 @@ public class HelloWord {
 		JButton btnKnown = new JButton("known");
 		btnKnown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+			if(!word.first) {
+				word.updateFeedback(1);
+				word.updateTime();
+				pro.getUser(username).getFlashCard().insert(word);
+			}
 				//current word
 				word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
 				wordLabel.setText(word.getWord());
-				textArea.setText(word.getDefinition());	
-			
+				textArea.setText(word.getDefinition());				
 				pro.getUser(username).setWordCount(pro.getUser(username).getWordCount()+1);
 				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + " word count: " + pro.getUser(username).getWordCount() );
 			}
