@@ -131,6 +131,7 @@ public class HelloWord {
 				panelMenu.setVisible(true);
 				panelBOW.setVisible(false);
 				pro.addUsers(username);
+				
 			}
 		});
 		btnNewButton.setBounds(238, 98, 76, 29);
@@ -229,9 +230,7 @@ public class HelloWord {
 		JButton btnKnown = new JButton("known");
 		btnKnown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//last word
-				System.out.println(word.getWeight() + "known: " + word.getWord());
-				
+			
 				//current word
 				word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
 				wordLabel.setText(word.getWord());
@@ -249,7 +248,6 @@ public class HelloWord {
 				word.updateFeedback(0);		
 				word.updateTime();
 				pro.getUser(username).getFlashCard().insert(word);
-				System.out.println(word.getWeight() + "unknown: " + word.getWord());
 				
 				//current word
 				List<IWord> pops = new LinkedList<>(); 
@@ -281,10 +279,7 @@ public class HelloWord {
 		JLabel lblRanking = new JLabel("ranking");
 		lblRanking.setBounds(18, 62, 107, 16);
 		panelFC.add(lblRanking);
-		lblRanking.setText("ranking: " + (pro.getRank()).getRank(username));
-		
-		
-		
+		lblRanking.setText("ranking: " + (pro.getRank()).getRank(username));		
 
 	}
 }
