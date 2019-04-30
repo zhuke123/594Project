@@ -26,7 +26,6 @@ public  class RankTest {
 		user1.setWordCount(10);
 		user2.setWordCount(20);
 		user3.setWordCount(30);
-		rank.showAllRank();
 	}
 	
 	/**
@@ -46,10 +45,7 @@ public  class RankTest {
 		user1.setWordCount(10);
 		user2.setWordCount(20);
 		user3.setWordCount(30);
-		rank.searchRank("user1");
 		user1.setWordCount(user1.getWordCount() + 1);
-		rank.searchRank("user1");
-		rank.searchRank("userNone");
 		
 	}
 	
@@ -69,10 +65,9 @@ public  class RankTest {
 		user1.setWordCount(10);
 		user2.setWordCount(20);
 		user3.setWordCount(30);
-		rank.showAllRank();
 		user1.setWordCount(user1.getWordCount() + 1);
 		rank.updateRank(user1);
-		rank.showAllRank();
+
 	}
 	@Test
 	public  void testGetRank() {
