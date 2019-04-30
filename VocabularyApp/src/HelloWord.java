@@ -34,7 +34,11 @@ public class HelloWord {
 	private JTextArea textArea;
 	private JLabel wordLabel;
 	private Word word;
-	
+	private JTextField txtSize;
+	private Set<IWord> wordSet;
+	private int bagSize;
+	private String str;
+	private JLabel lblRanking;
 	
 	/**
 	 * Launch the application.
@@ -91,19 +95,6 @@ public class HelloWord {
 		frame.getContentPane().add(panelFC, "name_49529805569344");
 		panelFC.setVisible(false);
 		
-		//home page
-		JButton btnHome = new JButton("Home");
-		btnHome.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelFC.setVisible(false);
-				panelMenu.setVisible(true);
-				panelBOW.setVisible(false);
-				panelLogin.setVisible(false);
-			}
-		});
-		
-		btnHome.setBounds(175, 213, 81, 29);
-		panelBOW.add(btnHome);
 		
 	
 		txtUsername = new JTextField();
@@ -131,6 +122,7 @@ public class HelloWord {
 				panelMenu.setVisible(true);
 				panelBOW.setVisible(false);
 				pro.addUsers(username);
+				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username));
 			}
 		});
 		btnNewButton.setBounds(238, 98, 76, 29);
@@ -182,13 +174,57 @@ public class HelloWord {
 				panelBOW.setVisible(true);
 				panelLogin.setVisible(false);
 				dic.handleRequest(pro.getUser(username).getBagOfWords());
-				Set<IWord> wordSet =  pro.getUser(username).getBagOfWords().getBag(3);
-				
+				wordSet =  pro.getUser(username).getBagOfWords().getBag(bagSize);	
 			}
 		});
 		btnBagOfWords.setBounds(221, 171, 117, 29);
 		panelMenu.add(btnBagOfWords);
 		
+		txtSize = new JTextField();
+		txtSize.setText("size");
+		txtSize.setBounds(153, 63, 130, 26);
+		panelBOW.add(txtSize);
+		txtSize.setColumns(10);
+		
+
+		
+		
+		JButton btnGo = new JButton("go");
+		btnGo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bagSize = Integer.parseInt(txtSize.getText());
+				System.out.println(bagSize);
+				str = "";
+				for(IWord word: wordSet) {
+					str += word.getWord();
+				}
+				System.out.println(str);
+			}
+		});
+		btnGo.setBounds(280, 63, 64, 29);
+		panelBOW.add(btnGo);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setBounds(125, 103, 223, 76);
+		panelBOW.add(textArea_1);
+		textArea_1.setText(str);
+		
+		//home page
+				JButton btnHome = new JButton("Home");
+				btnHome.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						panelFC.setVisible(false);
+						panelMenu.setVisible(true);
+						panelBOW.setVisible(false);
+						panelLogin.setVisible(false);
+					}
+				});
+				
+				btnHome.setBounds(175, 213, 81, 29);
+				panelBOW.add(btnHome);
+				
+			
+				
 		JButton btnNewButton_1 = new JButton("Log out");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -235,7 +271,10 @@ public class HelloWord {
 				//current word
 				word = (Word) pro.getUser(username).getFlashCard().getFlashCard();
 				wordLabel.setText(word.getWord());
-				textArea.setText(word.getDefinition());			
+				textArea.setText(word.getDefinition());	
+			
+				pro.getUser(username).setWordCount(pro.getUser(username).getWordCount()+1);
+				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + " word count: " + pro.getUser(username).getWordCount() );
 			}
 		});
 		btnKnown.setBounds(102, 187, 86, 29);
@@ -263,6 +302,7 @@ public class HelloWord {
 				for(IWord word : pops) pro.getUser(username).getFlashCard().insert(word);
 				wordLabel.setText(word.getWord());
 				textArea.setText(word.getDefinition());
+				lblRanking.setText("ranking: " + (pro.getRank()).getRank(username) + " word count: " + pro.getUser(username).getWordCount() );
 			}
 		});
 		btnUnknown.setBounds(233, 187, 102, 29);
@@ -278,13 +318,12 @@ public class HelloWord {
 		lblMessage.setForeground(UIManager.getColor("Button.light"));
 		lblMessage.setBackground(UIManager.getColor("Button.light"));
 		
-		JLabel lblRanking = new JLabel("ranking");
-		lblRanking.setBounds(18, 62, 107, 16);
+		lblRanking = new JLabel("ranking");
+		lblRanking.setBounds(18, 62, 168, 36);
 		panelFC.add(lblRanking);
-		lblRanking.setText("ranking: " + (pro.getRank()).getRank(username));
 		
 		
-		
+
 
 	}
 }

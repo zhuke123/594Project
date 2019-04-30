@@ -2,7 +2,6 @@ import java.util.*;
 
 public class BagOfWords implements IBagOfWords{
 	
-	Set<Word> bagOfWord;
 	Set<IWord> setOfWord;
 	int size;	
 
@@ -64,10 +63,6 @@ public class BagOfWords implements IBagOfWords{
 				res = set;
 			}
 		}	
-		
-		for(IWord word : res) {
-			System.out.println(word.getWord() + " " + word.getTextSources().size());
-		}
 		
 		return res;
 	}
