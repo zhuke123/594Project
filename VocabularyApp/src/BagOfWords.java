@@ -32,6 +32,9 @@ public class BagOfWords implements IBagOfWords{
 	}	
 	@Override
 	public Set<IWord> getBag(int bagSize) {
+		if(bagSize>6) {
+			return null;
+		}
 		//generate all combination
 		Set<HashSet<IWord>> combinations = new HashSet<HashSet<IWord>>();
 		HashSet<IWord> currentSet = new HashSet<IWord>();
