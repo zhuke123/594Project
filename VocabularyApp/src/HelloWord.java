@@ -189,8 +189,9 @@ public class HelloWord {
 		panelMenu.add(btnBagOfWords);
 		
 		txtSize = new JTextField();
+		txtSize.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		txtSize.setText("size");
-		txtSize.setBounds(153, 63, 130, 26);
+		txtSize.setBounds(325, 62, 205, 29);
 		panelBOW.add(txtSize);
 		txtSize.setColumns(10);
 		
@@ -198,9 +199,15 @@ public class HelloWord {
 		
 		
 		JButton btnGo = new JButton("go");
+		btnGo.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		btnGo.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				bagSize = Integer.parseInt(txtSize.getText());
+				if(bagSize>5) {
+					JOptionPane.showMessageDialog(null, "Bag Size should be smaller than 6", 
+				            "warning", JOptionPane.CLOSED_OPTION);
+				}
 				wordSet =  pro.getUser(username).getBagOfWords().getBag(bagSize);
 				str = "";
 				for(IWord word: wordSet) {
@@ -209,16 +216,18 @@ public class HelloWord {
 				textArea_1.setText(str);
 			}
 		});
-		btnGo.setBounds(280, 63, 64, 29);
+		btnGo.setBounds(536, 63, 64, 29);
 		panelBOW.add(btnGo);
 		
 		textArea_1 = new JTextArea();
-		textArea_1.setBounds(125, 103, 223, 76);
+		textArea_1.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
+		textArea_1.setBounds(235, 112, 505, 173);
 		panelBOW.add(textArea_1);
 		
 		
 		//home page
 				JButton btnHome = new JButton("Home");
+				btnHome.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 				btnHome.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						panelFC.setVisible(false);
@@ -228,7 +237,7 @@ public class HelloWord {
 					}
 				});
 				
-				btnHome.setBounds(175, 213, 81, 29);
+				btnHome.setBounds(408, 312, 81, 29);
 				panelBOW.add(btnHome);
 				
 			
