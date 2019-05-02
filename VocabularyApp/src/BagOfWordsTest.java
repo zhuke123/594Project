@@ -22,7 +22,7 @@ public class BagOfWordsTest {
 	}
 	
 	/**
-	 * 
+	 * Test for get a a certain size of bag
 	 */
 	@Test
 	public void testCreateDSandGetBag(){

@@ -6,12 +6,18 @@ import org.junit.Test;
 
 public class FlashCardTest {
 
+	/**
+	 * test for the event type of the flash-card
+	 */
 	@Test
 	public void testType() {
 		FlashCard fc = new FlashCard();
 		assertEquals(fc.type(),"flashcard");
 	}
 
+	/**
+	 * test for initiate the flash-card event
+	 */
 	@Test
 	public void testCreateDataStructure() {
 		Word word1 = new Word("a","def",1);
@@ -40,6 +46,9 @@ public class FlashCardTest {
 		assertEquals(fc.getFlashCard(),word8);
 	}
 	
+	/**
+	 * test for exception
+	 */
 	@Test(expected = NullPointerException.class)
 		public void testNull(){
 		FlashCard fc = new FlashCard();
