@@ -89,6 +89,8 @@ public  class RankTest {
 		assertEquals(rank.getRank(1),"user1");
 		assertEquals(rank.getRank("user1"),1);
 		assertEquals(rank.getRank("user3"),2);
+		assertEquals(rank.getRank(-1),"no such user");
+		assertEquals(rank.getRank("acsd"),-1);
 	}
 	
 

@@ -77,5 +77,15 @@ public class WordTest {
 		word1.setDefinition("qwer");
 		assertEquals(word1.getDefinition(),"qwer");
 	}
+	/**
+	 * test for isFirst
+	 */
+	@Test
+	public void testIsFirst() {
+		Word word1 = new Word("a", "lalala", 3);
+		assertTrue(word1.isFirst());
+		word1.updateFeedback(0);
+		assertFalse(word1.isFirst());
+	}
 
 }
