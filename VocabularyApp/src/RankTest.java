@@ -11,7 +11,6 @@ public  class RankTest {
 	 */
 	@Test
 	public void testShowAllRank() {
-		System.out.println("show all rank");
 		
 		IUser user1 = new User("user1");
 		IUser user2 = new User("user2");
@@ -33,7 +32,6 @@ public  class RankTest {
 	 */
 	@Test
 	public  void testSearchRank() {
-		System.out.println("search rank");
 		Rank rank = new Rank();
 		IUser user1 = new User("user1");
 		IUser user2 = new User("user2");
@@ -54,7 +52,6 @@ public  class RankTest {
 	 */
 	@Test
 	public  void testUpdateRank() {
-		System.out.println("update rank");
 		Rank rank = new Rank();
 		IUser user1 = new User("user1");
 		IUser user2 = new User("user2");
@@ -71,7 +68,6 @@ public  class RankTest {
 	}
 	@Test
 	public  void testGetRank() {
-		System.out.println("update rank");
 		Rank rank = new Rank();
 		IUser user1 = new User("user1");
 		IUser user2 = new User("user2");
