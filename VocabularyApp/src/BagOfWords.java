@@ -32,7 +32,7 @@ public class BagOfWords implements IBagOfWords{
 	}	
 	@Override
 	public Set<IWord> getBag(int bagSize) {
-		if(bagSize>5) {
+		if(bagSize>10) {
 			return null;
 		}
 		//generate all combination
