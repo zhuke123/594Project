@@ -19,7 +19,7 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Canvas;
 
-public class HelloWord {
+public class Main {
 	private JPanel panelMenu;
 	private JPanel panelFC;
 	private JPanel panelBOW;
@@ -49,7 +49,7 @@ public class HelloWord {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HelloWord window = new HelloWord();				
+					Main window = new Main();				
 					window.frame.setVisible(true);		
 					
 				} catch (Exception e) {
@@ -62,7 +62,7 @@ public class HelloWord {
 	/**
 	 * Create the application.
 	 */
-	public HelloWord() {
+	public Main() {
 		initialize();
 	}
 

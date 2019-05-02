@@ -39,10 +39,8 @@ public class Dictionary implements IDictionary {
 			}
 			b.close();
 			return true;
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			System.out.println("File not found");
-		} catch (IOException e) {
-			System.out.println("Not able to read file");
 		}
 		return false;
 	}

@@ -1,14 +1,12 @@
-1.create program(filename), a program to run the app;
+All you need to do to run the project is to run the Main.java 
 
-2.program would initiate a dictionary(read from the filename), an empty user list, and a rank system
+In the GUI, you can enter your username, then login with this username;
 
-3.then we should get input from the UI to input username and add new user using addUser(Username)
+And you can choose what to play, flash-card or bag-of-words or logout at any time by press home button.
 
-4.a new user would have two events, one is flash-card, another is bag-of-words
- we can initiate the activity by using the Dictionary.handleReuqest(event e)
- to call the inbuilt function in the event createDataStructure(list)
- 
-5.then we can start the events for the user, 
-update feedback(time, known) of words, then flashcard.insert back to the flash-card heap
+In the flash-card interface, you can see your ranking and count of known words.
 
-6.we should be able to switch between users using getUser() in program and get rank in the program Rank system, getRank()
+In the bag-of-words interface, you can enter your bag size and get a bag, if the bag size is more than 5,
+it will take a long time to process all combinations, and you should not input a bag size more than 10
+
+Every time you logout, you can login with existed user, or enter a new usename to create a new one.
